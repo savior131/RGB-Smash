@@ -13,7 +13,7 @@ public class PlayerRotation : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (rb.velocity.magnitude > 0.1f)
         {
