@@ -9,6 +9,7 @@ public class PlayerStateController : MonoBehaviour
             , new PlayerGreenColorState() , new PlayerBlueColorState()};
     IInputPlayer inputPlayer;
     [SerializeField] SpriteRenderer circleSprite;
+    [SerializeField] float changeSpeed=2;
     [SerializeField] bool mobileUiActive;
 
     bool canChange = true;
@@ -31,7 +32,7 @@ public class PlayerStateController : MonoBehaviour
         {
             canChange = true;
         }
-        currentPlayerColor.colorChange(circleSprite);
+        currentPlayerColor.colorChange(circleSprite,circleSprite.color,changeSpeed);
     }
 
     private void setInputSourse()

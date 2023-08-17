@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface IPlayerStates
 {
-    void colorChange(SpriteRenderer newColor);
+    void colorChange(SpriteRenderer newColor, Color currentColor, float changeSpeed);
 }
