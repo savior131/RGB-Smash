@@ -4,43 +4,48 @@ using UnityEngine;
 
 public class PlayerMovment : MonoBehaviour
 {
+    #region movment data
     [SerializeField] float speed;
-    float initSpeed;
     [SerializeField] float decelaration;
     [SerializeField] float accelration;
+    float initSpeed;
+    #endregion
     [SerializeField] bool mobileUiActive;
-
+    #region refrance data
     Rigidbody2D playerRB;
     IInputPlayer inputPlayer;
     Vector3 playerDir;
     bool playerDash;
-
+    #endregion
+    #region dash data
+    [SerializeField] float dashSpeed;
+    [SerializeField] float dashTime;
+    [SerializeField] float coolTimeDash;
+    bool isDash;
+    bool canDash;
+    #endregion
 
     private void Start()
     {
-        setInputType();
+        setInputSourse();
         playerRB = GetComponent<Rigidbody2D>();
         initSpeed = speed;
+        canDash = true;
     }
-
-    private void setInputType()
-    {
-        if (mobileUiActive)
-            inputPlayer = GetComponent<MobileController>();
-        else
-            inputPlayer = GetComponent<ActionsControl>();
-    }
-
     private void Update()
     {
-        playerDir = inputPlayer.getMovmentAxis();
-        playerDash = inputPlayer.getDashInput();
-        Debug.Log(playerDash);
+        if (playerDash && canDash && !isDash)
+        {
+            StartCoroutine(startDashCoroutines());
+        }
     }
-
     private void FixedUpdate()
     {
-        MovePlayer();
+        if (!isDash)
+        {
+            setPlayerInput();
+            MovePlayer();
+        }
     }
 
     private void MovePlayer()
@@ -53,8 +58,32 @@ public class PlayerMovment : MonoBehaviour
             speed = initSpeed;
     }
 
+    IEnumerator startDashCoroutines()
+    {
+        isDash = true;
+        canDash = false;
+        playerRB.velocity = playerDir * dashSpeed;
+        yield return new WaitForSeconds(dashTime);
+        isDash = false;
+        yield return new WaitForSeconds(coolTimeDash);
+        canDash = true;
+    }
     bool getPlayerStop()
     {
         return (playerDir.magnitude == 0);
+    }
+
+    private void setInputSourse()
+    {
+        if (mobileUiActive)
+            inputPlayer = GetComponent<MobileController>();
+        else
+            inputPlayer = GetComponent<ActionsControl>();
+    }
+
+    private void setPlayerInput()
+    {
+        playerDir = inputPlayer.getMovmentAxis();
+        playerDash = inputPlayer.getDashInput();
     }
 }

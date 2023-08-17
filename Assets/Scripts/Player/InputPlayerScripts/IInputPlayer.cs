@@ -6,4 +6,6 @@ public interface IInputPlayer
 {
     Vector3 getMovmentAxis();
     bool getDashInput();
+
+    bool getColorChangeInput();
 }
