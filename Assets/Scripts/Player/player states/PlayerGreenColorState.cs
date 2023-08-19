@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerGreenColorState : IPlayerStates
 {
-    public void colorChange(SpriteRenderer newColor)
+    public void colorChange(SpriteRenderer newColor, Color currentColor, float changeSpeed)
     {
-        newColor.color = new Color(0.31373f, 0.78431f, 0.47059f);
+        newColor.color = Color.Lerp(currentColor, new(0.31373f, 0.78431f, 0.47059f), Time.deltaTime* changeSpeed);
     }
 }

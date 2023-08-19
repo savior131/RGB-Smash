@@ -34,7 +34,7 @@ public class PlayerMovment : MonoBehaviour
     }
     private void Update()
     {
-        if (playerDash && canDash && !isDash)
+        if (playerDash && canDash)
         {
             StartCoroutine(startDashCoroutines());
         }
@@ -70,7 +70,7 @@ public class PlayerMovment : MonoBehaviour
     }
     bool getPlayerStop()
     {
-        return (playerDir.magnitude == 0);
+        return playerDir.magnitude == 0;
     }
 
     private void setInputSourse()
