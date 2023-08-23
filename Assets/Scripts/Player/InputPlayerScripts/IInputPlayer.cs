@@ -1,11 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public interface IInputPlayer
+public abstract class IInputPlayer : MonoBehaviour
 {
-    Vector3 getMovmentAxis();
-    bool getDashInput();
+    bool inputDash;
+    bool inputColorChnage;
+    protected Vector3 playerDir;
+    public abstract Vector3 getMovmentAxis();
 
-    bool getColorChangeInput();
+    public bool getColorChangeInput()
+    {
+        return inputColorChnage;
+    }
+    public bool getDashInput()
+    {
+        return inputDash;
+    }
+
+    void OnDash(InputValue value)
+    {
+        inputDash = value.isPressed;
+    }
+    void OnColorChange(InputValue value)
+    {
+        inputColorChnage = value.isPressed;
+    }
 }

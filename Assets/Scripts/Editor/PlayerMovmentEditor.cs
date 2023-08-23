@@ -9,10 +9,10 @@ public class PlayerMovmentEditor : Editor
     SerializedProperty speed;
     SerializedProperty decelaration;
     SerializedProperty accelration;
-    SerializedProperty mobileUiActive;
     SerializedProperty dashSpeed;
     SerializedProperty dashTime;
     SerializedProperty coolTimeDash;
+    SerializedProperty control;
 
     bool playerSpeedGroub = false , playerdash = false;
     #endregion
@@ -22,11 +22,10 @@ public class PlayerMovmentEditor : Editor
         speed = serializedObject.FindProperty("speed");
         decelaration = serializedObject.FindProperty("decelaration");
         accelration = serializedObject.FindProperty("accelration");
-        mobileUiActive = serializedObject.FindProperty("mobileUiActive");
         dashSpeed = serializedObject.FindProperty("dashSpeed");
         dashTime = serializedObject.FindProperty("dashTime");
         coolTimeDash = serializedObject.FindProperty("coolTimeDash");
-
+        control = serializedObject.FindProperty("control");
         
     }
 
@@ -34,6 +33,7 @@ public class PlayerMovmentEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
+        EditorGUILayout.PropertyField(control);
         playerSpeedGroub = EditorGUILayout.BeginFoldoutHeaderGroup(playerSpeedGroub, "player speed");
         if(playerSpeedGroub)
         {
@@ -50,7 +50,6 @@ public class PlayerMovmentEditor : Editor
             EditorGUILayout.PropertyField(coolTimeDash);
         }
         EditorGUILayout.EndFoldoutHeaderGroup();
-        EditorGUILayout.PropertyField(mobileUiActive);
         serializedObject.ApplyModifiedProperties();
     }
 }

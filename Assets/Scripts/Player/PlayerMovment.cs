@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class PlayerMovment : MonoBehaviour
 {
+    enum controls
+    {
+        mobile ,
+        pc ,
+        gamepad
+    }
     #region movment data
     [SerializeField] float speed;
     [SerializeField] float decelaration;
     [SerializeField] float accelration;
     float initSpeed;
     #endregion
-    [SerializeField] bool mobileUiActive;
+    [SerializeField] controls control;
     #region refrance data
     Rigidbody2D playerRB;
     IInputPlayer inputPlayer;
@@ -75,7 +81,7 @@ public class PlayerMovment : MonoBehaviour
 
     private void setInputSourse()
     {
-        if (mobileUiActive)
+        if (control == controls.mobile)
             inputPlayer = GetComponent<MobileController>();
         else
             inputPlayer = GetComponent<ActionsControl>();
