@@ -4,43 +4,36 @@ using UnityEngine;
 
 public class PlayerStateController : MonoBehaviour
 {
-    IPlayerStates currentPlayerColor;
-    IPlayerStates[] playerColorStates = {new PlayerRedColorState() 
+    IPlayerStates currentPlayerTrailColor;
+    IPlayerStates[] playerColorTrailStates = {new PlayerRedColorState() 
             , new PlayerGreenColorState() , new PlayerBlueColorState()};
-    IInputPlayer inputPlayer;
-    [SerializeField] SpriteRenderer circleSprite;
-    [SerializeField] float changeSpeed=2;
-    [SerializeField] bool mobileUiActive;
-
-    bool canChange = true;
-    int colorIndex = 0;
+    TrailRenderer TrailColor;
     private void Start()
     {
-        currentPlayerColor = playerColorStates[Random.Range(0 , playerColorStates.Length)];
-        setInputSourse();
+        TrailColor = GetComponent<TrailRenderer>();
+        setTrailColor(playerColorTrailStates[0]);
     }
     private void Update()
     {
-        if (inputPlayer.getColorChangeInput() && canChange)
+        if (Input.GetKeyDown(KeyCode.Z))
         {
-            colorIndex++;
-            colorIndex = colorIndex % playerColorStates.Length;
-            currentPlayerColor = playerColorStates[colorIndex];
-            canChange = false;
+            setTrailColor(playerColorTrailStates[0]);
+            currentPlayerTrailColor.colorChange(TrailColor);
         }
-        else if (!inputPlayer.getColorChangeInput())
+        else if(Input.GetKeyDown(KeyCode.X))
         {
-            canChange = true;
+            setTrailColor(playerColorTrailStates[1]);
+            currentPlayerTrailColor.colorChange(TrailColor);
         }
-        currentPlayerColor.colorChange(circleSprite,circleSprite.color,changeSpeed);
+        else if(Input.GetKeyDown(KeyCode.C))
+        {
+            setTrailColor(playerColorTrailStates[2]);
+            currentPlayerTrailColor.colorChange(TrailColor);
+        }
+        
     }
-
-    private void setInputSourse()
+    public void setTrailColor(IPlayerStates newTrailColor)
     {
-        if (mobileUiActive)
-            inputPlayer = GetComponent<MobileController>();
-        else
-            inputPlayer = GetComponent<ActionsControl>();
+        currentPlayerTrailColor = newTrailColor;
     }
-
 }

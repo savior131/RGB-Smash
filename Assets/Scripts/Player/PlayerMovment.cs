@@ -7,8 +7,7 @@ public class PlayerMovment : MonoBehaviour
     enum controls
     {
         mobile ,
-        pc ,
-        gamepad
+        pcAndGamepad ,
     }
     #region movment data
     [SerializeField] float speed;
@@ -20,7 +19,7 @@ public class PlayerMovment : MonoBehaviour
     #region refrance data
     Rigidbody2D playerRB;
     IInputPlayer inputPlayer;
-    Vector3 playerDir;
+    public Vector3 playerDir;
     bool playerDash;
     #endregion
     #region dash data
