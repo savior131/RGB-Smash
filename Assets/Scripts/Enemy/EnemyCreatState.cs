@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
-public class EnemyCreatState : EnemyBaseState
+public class EnemyCreatState : EnemyBaseState 
 {
     #region colors
     Color[] colors = { new Color(1f, 0f, 0f) , new Color(0f, 1f, 0f), new Color(0f, 0f, 1f) };

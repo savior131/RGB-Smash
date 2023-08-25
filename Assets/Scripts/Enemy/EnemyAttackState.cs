@@ -2,7 +2,6 @@ using SpriteGlow;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class EnemyAttackState : EnemyBaseState
 {
@@ -19,8 +18,7 @@ public class EnemyAttackState : EnemyBaseState
     {
         float forceX = Random.Range(-100, 100);
         float forceY = Random.Range(-100, 100);
-        enemyRb.AddForce(new Vector2(forceX / 100, forceY / 100).normalized * force , ForceMode2D.Impulse);
-        enemyRb.velocity = Vector2.ClampMagnitude(enemyRb.velocity,force);
+        enemyRb.AddForce(new Vector2(forceX / 100, forceY / 100).normalized * force, ForceMode2D.Impulse);
     }
 
     public override void setupUpdate(EnemyStateManger enemy)
@@ -30,12 +28,11 @@ public class EnemyAttackState : EnemyBaseState
 
     public override void setupWhenCollsion(EnemyStateManger enemy)
     {
-
+        enemyRb.AddForce(force * enemyRb.velocity, ForceMode2D.Impulse);
     }
 
     public override void setupFixedUpdate(EnemyStateManger enemy)
     {
-        
+        enemyRb.velocity = Vector3.ClampMagnitude(enemyRb.velocity, force);
     }
-
 }
