@@ -47,6 +47,22 @@ MonoBehaviour:
   dirtIntensity:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &-5795392106999559300
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  active: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.373
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,6 +81,7 @@ MonoBehaviour:
   - {fileID: 7016940764514548356}
   - {fileID: 7310447597290036429}
   - {fileID: 744867492501461062}
+  - {fileID: -5795392106999559300}
 --- !u!114 &744867492501461062
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -86,7 +103,7 @@ MonoBehaviour:
     m_Value: 2
   intensity:
     m_OverrideState: 1
-    m_Value: 0.056
+    m_Value: 0.144
   clamp:
     m_OverrideState: 0
     m_Value: 0.05
