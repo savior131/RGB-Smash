@@ -34,4 +34,9 @@ public class EnemyStateManger : MonoBehaviour
         currentState.setupStart(this, enemyColor, smallCircleInEnemy, particalEffectManger);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        currentState.setupWhenCollsion(this);
+    }
+
 }
