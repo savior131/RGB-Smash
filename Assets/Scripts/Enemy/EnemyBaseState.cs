@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class EnemyBaseState
 {
     public abstract void setupStart(EnemyStateManger enemy, SpriteGlowEffect enemyColor
-        , SpriteRenderer smallCircleInEnemy, ParticalEffectManger particalEffectManger);
+        , ParticalEffectManger particalEffectManger);
     public abstract void setupUpdate(EnemyStateManger enemy);
     public abstract void setupFixedUpdate(EnemyStateManger enemy);
 

@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class ParticalEffectManger : MonoBehaviour
 {
-    [SerializeField] GameObject creatEnemyPartical;
+    [SerializeField] GameObject[] Particals;
 
-    public void releasCreatEnemyPartical(Transform position , Color newColor)
+    public void releaseCreateEnemyPartical(Transform position , Color newColor)
     {
-        GameObject partical = Instantiate(creatEnemyPartical ,position.transform.position , Quaternion.identity);
+        GameObject partical = Instantiate(Particals[0] ,position.transform.position , Quaternion.identity);
+        partical.GetComponent<ParticleSystem>().startColor = newColor;
+    }
+    public void enemyTrailPartical(Transform enemy, Color newColor)
+    {
+        GameObject partical = Instantiate(Particals[1], enemy.transform.position, Quaternion.identity);
+        partical.transform.parent=enemy.gameObject.transform;
         partical.GetComponent<ParticleSystem>().startColor = newColor;
     }
 }

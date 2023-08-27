@@ -26,7 +26,7 @@ public class PlayerMovment : MonoBehaviour
     [SerializeField] float dashSpeed;
     [SerializeField] float dashTime;
     [SerializeField] float coolTimeDash;
-    bool isDash;
+    public bool isDash;
     bool canDash;
     #endregion
 
