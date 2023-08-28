@@ -8,6 +8,7 @@ public class EnemyStateManger : MonoBehaviour
     EnemyBaseState currentState;
     public EnemyCreatState enemyCreatState = new EnemyCreatState();
     public EnemyAttackState enemyAttackState = new EnemyAttackState();
+    public EnemyDestroyState enemyDestroyState = new EnemyDestroyState();
     SpriteGlowEffect enemyColor;
     ParticalEffectManger particalEffectManger;
 
@@ -36,7 +37,6 @@ public class EnemyStateManger : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        currentState.setupWhenCollsion(this);
+        currentState.setupWhenCollsion(this ,collision);
     }
-
 }

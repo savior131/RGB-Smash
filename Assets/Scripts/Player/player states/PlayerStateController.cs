@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerStateController : MonoBehaviour
 {
-    IPlayerStates currentPlayerTrailColor;
+    [HideInInspector] public IPlayerStates currentPlayerTrailColor;
     IPlayerStates[] playerColorTrailStates = {new PlayerRedColorState() 
             , new PlayerGreenColorState() , new PlayerBlueColorState()};
     TrailRenderer TrailColor;
+    public string redC = "red";
     private void Start()
     {
         TrailColor = GetComponent<TrailRenderer>();
@@ -35,5 +36,16 @@ public class PlayerStateController : MonoBehaviour
     public void setTrailColor(IPlayerStates newTrailColor)
     {
         currentPlayerTrailColor = newTrailColor;
+    }
+
+    public string getPlayerColor()
+    {
+        if (currentPlayerTrailColor is PlayerBlueColorState)
+            return "blue";
+        else if (currentPlayerTrailColor is PlayerRedColorState)
+            return "red";
+        else if (currentPlayerTrailColor is PlayerGreenColorState)
+            return "green";
+        return "null";
     }
 }

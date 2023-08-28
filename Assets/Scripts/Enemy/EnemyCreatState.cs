@@ -20,13 +20,13 @@ public class EnemyCreatState : EnemyBaseState
         setReferance(enemy, out enemyColor, out particalEffectManger);
         setColorEnemy(enemy, enemyColor, particalEffectManger);
         enemy.transform.localScale = growScale;
+        enemy.GetComponent<CircleCollider2D>().enabled = false;
     }
 
     private void setColorEnemy(EnemyStateManger enemy, SpriteGlowEffect enemyColor, ParticalEffectManger particalEffectManger)
     {
         colorIndex = Random.Range(0, colors.Length);
         enemyColor.GlowColor = colors[colorIndex];
-        
         particalEffectManger.releaseCreateEnemyPartical(enemy.transform, colors[colorIndex]);
     }
 
@@ -45,8 +45,9 @@ public class EnemyCreatState : EnemyBaseState
             enemy.swichEnemyState(enemy.enemyAttackState);
     }
 
-    public override void setupWhenCollsion(EnemyStateManger enemy)
+    public override void setupWhenCollsion(EnemyStateManger enemy , Collision2D collision)
     {
+        
         
     }
 
@@ -54,4 +55,5 @@ public class EnemyCreatState : EnemyBaseState
     {
 
     }
+
 }

@@ -17,4 +17,10 @@ public class ParticalEffectManger : MonoBehaviour
         partical.transform.parent=enemy.gameObject.transform;
         partical.GetComponent<ParticleSystem>().startColor = newColor;
     }
+
+    public void enemyDestroyPartical(Transform enemy, Color newColor)
+    {
+        GameObject partical = Instantiate(Particals[2], enemy.transform.position, Quaternion.identity);
+        partical.GetComponent<ParticleSystem>().startColor = newColor;
+    }
 }

@@ -6,16 +6,17 @@ using UnityEngine;
 public class EnemyAttackState : EnemyBaseState
 {
     Rigidbody2D enemyRb;
-    CameraShake shake;
     float force = 10;
+    Color currentEnemyColor;
     public override void setupStart(EnemyStateManger enemy, SpriteGlowEffect enemyColor 
          , ParticalEffectManger particalEffectManger)
     {
+        enemy.GetComponent<CircleCollider2D>().enabled = true;
         enemyRb = enemy.GetComponent<Rigidbody2D>();
-        shake= Camera.allCameras[0].GetComponent<CameraShake>();
         setReferance(enemy, out enemyColor, out particalEffectManger);
         addForseForCircle();
         particalEffectManger.enemyTrailPartical(enemy.transform,enemyColor.GlowColor);
+        currentEnemyColor = enemyColor.GlowColor;
     }
 
     void addForseForCircle()
@@ -32,18 +33,41 @@ public class EnemyAttackState : EnemyBaseState
     }
     public override void setupUpdate(EnemyStateManger enemy)
     {
-        
+
     }
 
-    public override void setupWhenCollsion(EnemyStateManger enemy)
+    public override void setupWhenCollsion(EnemyStateManger enemy, Collision2D collision)
     {
         enemyRb.AddForce(force * enemyRb.velocity, ForceMode2D.Impulse);
-        shake.Shake(0.1f, 0.6f,5);
-        
+        Camera.main.GetComponent<CameraShake>().Shake(0.1f, 1f, 5);
+        if (collision.gameObject.tag == "Player")
+        {
+            GameObject trail = GameObject.FindGameObjectWithTag("Trail");
+            if (trail.GetComponent<PlayerStateController>().getPlayerColor() == "red" && currentEnemyColor.r == 1)
+            {
+                enemy.swichEnemyState(enemy.enemyDestroyState);
+            }
+            else if (trail.GetComponent<PlayerStateController>().getPlayerColor() == "green" && currentEnemyColor.g == 1)
+            {
+                enemy.swichEnemyState(enemy.enemyDestroyState);
+            }
+            else if (trail.GetComponent<PlayerStateController>().getPlayerColor() == "blue" && currentEnemyColor.b == 1)
+            {
+                enemy.swichEnemyState(enemy.enemyDestroyState);
+            }
+            else
+            {
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                //GameObject.Destroy(player);
+                enemy.swichEnemyState(enemy.enemyDestroyState);
+            }
+            Camera.main.GetComponent<CameraShake>().Shake(0.3f, 1.8f, 20);
+        }
     }
 
     public override void setupFixedUpdate(EnemyStateManger enemy)
     {
         enemyRb.velocity = Vector3.ClampMagnitude(enemyRb.velocity, force);
     }
+
 }
