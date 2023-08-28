@@ -14,8 +14,12 @@ public class PlayerGreenColorState : IPlayerStates
         newColor.startColor = color;
         fog.sharedMaterial.SetColor("_FogColor", color);
         whiteBackground.color = color;
-        glowyBackground.GlowColor = color;
-        glowyBackground.AlphaThreshold = Mathf.PingPong(Time.time, 1f);
+        float interpiolate = Mathf.Abs(Mathf.Lerp(-1f, 1f, Time.deltaTime*spreadSpeed));
+        glowyBackground.AlphaThreshold = interpiolate;
+        if (interpiolate > -0.01 && interpiolate < 0.01)
+        {
+            glowyBackground.GlowColor = color;
+        }
     }
 
 

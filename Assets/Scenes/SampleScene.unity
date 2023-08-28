@@ -4085,7 +4085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeSpeed: 2
-  spreadSpeed: 2
+  spreadSpeed: 0.1
   redC: red
 --- !u!4 &2127275050
 Transform:
