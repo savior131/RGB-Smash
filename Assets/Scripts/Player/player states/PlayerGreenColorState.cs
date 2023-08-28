@@ -1,12 +1,22 @@
+using SpriteGlow;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+
 
 public class PlayerGreenColorState : IPlayerStates
 {
-    public void colorChange(TrailRenderer newColor)
+
+    public void colorChange(TrailRenderer newColor, Renderer fog, SpriteRenderer whiteBackground, SpriteGlowEffect glowyBackground, float spreadSpeed, float changeSpeed)
     {
-        //newColor.color = Color.Lerp(currentColor, new(0.31373f, 0.78431f, 0.47059f), Time.deltaTime* changeSpeed);
-        newColor.startColor = new Color(0.31373f, 0.78431f, 0.47059f);
+        Color color = Color.Lerp(newColor.startColor, new(0, 1, 0), Time.deltaTime* changeSpeed);
+        newColor.startColor = color;
+        fog.sharedMaterial.SetColor("_FogColor", color);
+        whiteBackground.color = color;
+        glowyBackground.GlowColor = color;
+        glowyBackground.AlphaThreshold = Mathf.PingPong(Time.time, 1f);
     }
+
+
 }
