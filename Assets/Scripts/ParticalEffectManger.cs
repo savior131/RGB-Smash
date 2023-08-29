@@ -9,6 +9,7 @@ public class ParticalEffectManger : MonoBehaviour
     public void releaseCreateEnemyPartical(Transform position , Color newColor)
     {
         GameObject partical = Instantiate(Particals[0] ,position.transform.position , Quaternion.identity);
+        partical.transform.parent = position.gameObject.transform;
         partical.GetComponent<ParticleSystem>().startColor = newColor;
     }
     public void enemyTrailPartical(Transform enemy, Color newColor)

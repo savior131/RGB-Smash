@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.RuleTile.TilingRuleOutput;
+using UnityEngine.Pool;
 
 public class EnemyCreatState : EnemyBaseState 
 {
@@ -15,7 +16,7 @@ public class EnemyCreatState : EnemyBaseState
     #endregion
     int colorIndex = 0;
     public override void setupStart(EnemyStateManger enemy,SpriteGlowEffect enemyColor,
-                                   ParticalEffectManger particalEffectManger)
+                                   ParticalEffectManger particalEffectManger , IObjectPool<EnemyStateManger> enemyPool)
     {
         setReferance(enemy, out enemyColor, out particalEffectManger);
         setColorEnemy(enemy, enemyColor, particalEffectManger);

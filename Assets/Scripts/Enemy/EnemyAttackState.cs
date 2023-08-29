@@ -2,6 +2,7 @@ using SpriteGlow;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class EnemyAttackState : EnemyBaseState
 {
@@ -9,7 +10,7 @@ public class EnemyAttackState : EnemyBaseState
     float force = 10;
     Color currentEnemyColor;
     public override void setupStart(EnemyStateManger enemy, SpriteGlowEffect enemyColor 
-         , ParticalEffectManger particalEffectManger)
+         , ParticalEffectManger particalEffectManger , IObjectPool<EnemyStateManger> enemyPool)
     {
         enemy.GetComponent<CircleCollider2D>().enabled = true;
         enemyRb = enemy.GetComponent<Rigidbody2D>();

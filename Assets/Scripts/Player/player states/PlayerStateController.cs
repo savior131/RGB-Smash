@@ -8,7 +8,6 @@ public class PlayerStateController : MonoBehaviour
     IPlayerStates[] playerColorTrailStates = {new PlayerRedColorState() 
             , new PlayerGreenColorState() , new PlayerBlueColorState()};
     TrailRenderer TrailColor;
-    public string redC = "red";
     private void Start()
     {
         TrailColor = GetComponent<TrailRenderer>();
