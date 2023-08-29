@@ -17,9 +17,14 @@ public class EnemyStateManger : MonoBehaviour
     private void OnEnable()
     {
         currentState = enemyCreatState;
-        enemyCreatState.setupStart(this, enemyColor , particalEffectManger, enemyPool);
-        randX = Random.Range(0, 24);
-        randY = Random.Range(0, 12);
+        enemyCreatState.setupStart(this, enemyColor, particalEffectManger, enemyPool);
+        setRandomPosition();
+    }
+
+    private void setRandomPosition()
+    {
+        randX = Random.Range(-24, 24);
+        randY = Random.Range(-12, 12);
         transform.position = new Vector3(randX, randY, 0);
     }
 
