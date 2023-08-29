@@ -43,7 +43,7 @@ public class EnemyAttackState : EnemyBaseState
         Camera.main.GetComponent<CameraShake>().Shake(0.1f, 1f, 5);
         if (collision.gameObject.tag == "Player")
         {
-            GameObject trail = GameObject.FindGameObjectWithTag("Trail");
+            GameObject trail = GameObject.FindGameObjectWithTag("State Manager");
             if (trail.GetComponent<PlayerStateController>().getPlayerColor() == "red" && currentEnemyColor.r == 1)
             {
                 enemy.swichEnemyState(enemy.enemyDestroyState);
