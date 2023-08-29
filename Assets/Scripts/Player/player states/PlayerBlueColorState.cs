@@ -13,16 +13,6 @@ public class PlayerBlueColorState : IPlayerStates
         newColor.startColor = color;
         fog.sharedMaterial.SetColor("_FogColor", color);
         whiteBackground.color = color;
-        if (glowyBackground.AlphaThreshold < 0.1)
-        {
-            glowyBackground.GlowColor = new(0, 0, 1);
-        }
-
+        glowyBackground.GlowColor = (glowyBackground.AlphaThreshold < 0.1) ? new(1, 0, 0) : glowyBackground.GlowColor;
     }
-
-    public void spread(Animator animator)
-    {
-        animator.SetTrigger("Change");
-    }
-
 }
