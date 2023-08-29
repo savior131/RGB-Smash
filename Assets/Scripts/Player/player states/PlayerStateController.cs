@@ -14,12 +14,14 @@ public class PlayerStateController : MonoBehaviour
     SpriteRenderer whiteBackground;
     SpriteGlowEffect glowyBackground;
     Renderer fog;
+    Animator animator;
 
     public string redC = "red";
     private void Start()
     {
         whiteBackground = GameObject.FindGameObjectWithTag("White Background").GetComponent<SpriteRenderer>();
         glowyBackground = GameObject.FindGameObjectWithTag("Glowy Background").GetComponent<SpriteGlowEffect>();
+        animator= GameObject.FindGameObjectWithTag("Glowy Background").GetComponent<Animator>();
         fog = GameObject.FindGameObjectWithTag("Fog").GetComponent<Renderer>();
         TrailColor = GameObject.FindGameObjectWithTag("Trail").GetComponent<TrailRenderer>();
         setTrailColor(playerColorTrailStates[0]);
@@ -30,7 +32,7 @@ public class PlayerStateController : MonoBehaviour
         {
             
             setTrailColor(playerColorTrailStates[0]);
-            
+            currentPlayerTrailColor.spread(animator);
             
             
         }
@@ -38,17 +40,18 @@ public class PlayerStateController : MonoBehaviour
         {
             
             setTrailColor(playerColorTrailStates[1]);
+            currentPlayerTrailColor.spread(animator);
 
-           
         }
         else if(Input.GetKeyDown(KeyCode.C))
         {
             
             setTrailColor(playerColorTrailStates[2]);
-            
+            currentPlayerTrailColor.spread(animator);
 
         }
-        currentPlayerTrailColor.colorChange(TrailColor, fog, whiteBackground, glowyBackground, spreadSpeed, changeSpeed);
+        currentPlayerTrailColor.colorChange(TrailColor, fog, whiteBackground, glowyBackground, changeSpeed);
+
         
     }
     public void setTrailColor(IPlayerStates newTrailColor)
