@@ -8,7 +8,7 @@ using UnityEngine.Pool;
 public class EnemyCreatState : EnemyBaseState 
 {
     #region colors
-    Color[] colors = { new Color(1f, 0f, 0f) , new Color(0f, 1f, 0f), new Color(0f, 0f, 1f) };
+    Color[] colors = {Color.red , Color.green, Color.blue};
     #endregion
     #region scale
     Vector3 growScale = new Vector3(0.1f, 0.1f, 0.1f);

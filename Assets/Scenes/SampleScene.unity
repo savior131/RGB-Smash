@@ -739,6 +739,71 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1001 &553820307
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6823812950734562135, guid: 4801cbe1eb617744d99de28bd3a25980, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823812950734562135, guid: 4801cbe1eb617744d99de28bd3a25980, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.238531
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823812950734562135, guid: 4801cbe1eb617744d99de28bd3a25980, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.2675123
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823812950734562135, guid: 4801cbe1eb617744d99de28bd3a25980, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823812950734562135, guid: 4801cbe1eb617744d99de28bd3a25980, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823812950734562135, guid: 4801cbe1eb617744d99de28bd3a25980, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823812950734562135, guid: 4801cbe1eb617744d99de28bd3a25980, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823812950734562135, guid: 4801cbe1eb617744d99de28bd3a25980, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823812950734562135, guid: 4801cbe1eb617744d99de28bd3a25980, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823812950734562135, guid: 4801cbe1eb617744d99de28bd3a25980, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823812950734562135, guid: 4801cbe1eb617744d99de28bd3a25980, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6921143831402825051, guid: 4801cbe1eb617744d99de28bd3a25980, type: 3}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7398642880680345371, guid: 4801cbe1eb617744d99de28bd3a25980, type: 3}
+      propertyPath: m_Name
+      value: destroy enemy partical
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4801cbe1eb617744d99de28bd3a25980, type: 3}
 --- !u!1 &674225579
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,9 +1511,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1643933719}
   - component: {fileID: 1643933720}
+  - component: {fileID: 1643933721}
   m_Layer: 3
   m_Name: Attractor
-  m_TagString: Untagged
+  m_TagString: Attractor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1645,29 +1711,29 @@ ParticleSystemForceField:
     m_GravityCurve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
-      minScalar: 1
+      scalar: 5
+      minScalar: 6
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
+          time: 0.003012659
+          value: 0.62564087
+          inSlope: 0.6201037
+          outSlope: 0.6201037
+          tangentMode: 34
           weightedMode: 0
-          inWeight: 0.33333334
+          inWeight: 0
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
+          time: 1.0079803
+          value: 1.2488251
+          inSlope: 0.6201037
+          outSlope: 0.6201037
+          tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 0.33333334
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -1963,6 +2029,41 @@ ParticleSystemForceField:
         m_RotationOrder: 4
     m_MultiplyDragByParticleSize: 1
     m_MultiplyDragByParticleVelocity: 1
+--- !u!58 &1643933721
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643933718}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.7
 --- !u!1 &1684737244
 GameObject:
   m_ObjectHideFlags: 0
@@ -2590,6 +2691,7 @@ GameObject:
   - component: {fileID: 2110805535}
   - component: {fileID: 2110805539}
   - component: {fileID: 2110805541}
+  - component: {fileID: 2110805542}
   m_Layer: 3
   m_Name: player
   m_TagString: Player
@@ -2774,5 +2876,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3bb2656e80edf994a92813efac36d224, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2110805542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110805530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2aa57f1b02175c449f30b9d692f7d33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
