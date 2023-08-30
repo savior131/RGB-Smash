@@ -59,7 +59,7 @@ public class EnemyAttackState : EnemyBaseState
             else
             {
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
-                //GameObject.Destroy(player);
+                player.GetComponent<PlayerHealth>().decreaseHealth();
                 enemy.swichEnemyState(enemy.enemyDestroyState);
             }
             Camera.main.GetComponent<CameraShake>().Shake(0.3f, 1.8f, 20);
