@@ -16,7 +16,9 @@ public class EnemyAttackState : EnemyBaseState
         enemyRb = enemy.GetComponent<Rigidbody2D>();
         setReferance(enemy, out enemyColor, out particalEffectManger);
         addForseForCircle();
+#pragma warning disable CS0612 // Type or member is obsolete
         particalEffectManger.enemyTrailPartical(enemy.transform,enemyColor.GlowColor);
+#pragma warning restore CS0612 // Type or member is obsolete
         currentEnemyColor = enemyColor.GlowColor;
     }
 
@@ -44,15 +46,15 @@ public class EnemyAttackState : EnemyBaseState
         if (collision.gameObject.tag == "Player")
         {
             GameObject trail = GameObject.FindGameObjectWithTag("Trail");
-            if (trail.GetComponent<PlayerStateController>().getPlayerColor() == "red" && currentEnemyColor.r == 1)
+            if (trail.GetComponent<PlayerStateController>().getPlayerColor() == Color.red && currentEnemyColor.r == 1)
             {
                 enemy.swichEnemyState(enemy.enemyDestroyState);
             }
-            else if (trail.GetComponent<PlayerStateController>().getPlayerColor() == "green" && currentEnemyColor.g == 1)
+            else if (trail.GetComponent<PlayerStateController>().getPlayerColor() == Color.green && currentEnemyColor.g == 1)
             {
                 enemy.swichEnemyState(enemy.enemyDestroyState);
             }
-            else if (trail.GetComponent<PlayerStateController>().getPlayerColor() == "blue" && currentEnemyColor.b == 1)
+            else if (trail.GetComponent<PlayerStateController>().getPlayerColor() == Color.blue && currentEnemyColor.b == 1)
             {
                 enemy.swichEnemyState(enemy.enemyDestroyState);
             }

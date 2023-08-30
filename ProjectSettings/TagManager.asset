@@ -11,6 +11,7 @@ TagManager:
   - Glowy Background
   - State Manager
   - Input System
+  - Attractor
   layers:
   - Default
   - TransparentFX

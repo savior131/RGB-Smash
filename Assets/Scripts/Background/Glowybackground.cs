@@ -27,12 +27,12 @@ public class Glowybackground : MonoBehaviour
 
     private void setColorBackground()
     {
-        if (trail.getPlayerColor() == "red")
-            backgroundSprite.GlowColor = new Color(1, 0, 0);
-        else if (trail.getPlayerColor() == "green")
-            backgroundSprite.GlowColor = new Color(0, 1, 0);
-        else if (trail.getPlayerColor() == "blue")
-            backgroundSprite.GlowColor = new Color(0, 0, 1);
+        if (trail.getPlayerColor() == Color.red)
+            backgroundSprite.GlowColor = Color.red;
+        else if (trail.getPlayerColor() == Color.green)
+            backgroundSprite.GlowColor = Color.green;
+        else if (trail.getPlayerColor() == Color.blue)
+            backgroundSprite.GlowColor = Color.blue;
     }
 
     IEnumerator startChangeColor()

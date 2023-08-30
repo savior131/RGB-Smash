@@ -27,12 +27,17 @@ public class PlayerStateController : MonoBehaviour
         setPlayerInput();
         if (playerChangeColor && canChangeColor)
         {
-            setColorIndex();
-            StartCoroutine(startColorChange(colorIndex));
-            StartCoroutine(startColorChange());
-            backgoundChange.Invoke();
+            colorChanger();
         }
         colorChange();
+    }
+
+    public void colorChanger()
+    {
+        setColorIndex();
+        StartCoroutine(startColorChange(colorIndex));
+        StartCoroutine(startColorChange());
+        backgoundChange.Invoke();
     }
 
     private void setColorIndex()
@@ -51,15 +56,15 @@ public class PlayerStateController : MonoBehaviour
         currentPlayerTrailColor = newTrailColor;
     }
 
-    public string getPlayerColor()
+    public Color getPlayerColor()
     {
         if (currentPlayerTrailColor is PlayerBlueColorState)
-            return "blue";
+            return Color.blue;
         else if (currentPlayerTrailColor is PlayerRedColorState)
-            return "red";
+            return Color.red;
         else if (currentPlayerTrailColor is PlayerGreenColorState)
-            return "green";
-        return "null";
+            return  Color.green;
+        return Color.white;
     }
 
     void colorChange()
@@ -77,7 +82,7 @@ public class PlayerStateController : MonoBehaviour
     IEnumerator startColorChange()
     {
         canChangeColor = false;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         canChangeColor = true;
     }
 }

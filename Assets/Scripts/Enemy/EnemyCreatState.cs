@@ -8,13 +8,15 @@ using UnityEngine.Pool;
 public class EnemyCreatState : EnemyBaseState 
 {
     #region colors
-    Color[] colors = { new Color(1f, 0f, 0f) , new Color(0f, 1f, 0f), new Color(0f, 0f, 1f) };
+    Color[] colors = { Color.red , Color.green, Color.blue};
     #endregion
     #region scale
     Vector3 growScale = new Vector3(0.1f, 0.1f, 0.1f);
     float growSpeed = 7f;
     #endregion
     int colorIndex = 0;
+
+    
     public override void setupStart(EnemyStateManger enemy,SpriteGlowEffect enemyColor,
                                    ParticalEffectManger particalEffectManger , IObjectPool<EnemyStateManger> enemyPool)
     {
@@ -24,11 +26,14 @@ public class EnemyCreatState : EnemyBaseState
         enemy.GetComponent<CircleCollider2D>().enabled = false;
     }
 
+   
     private void setColorEnemy(EnemyStateManger enemy, SpriteGlowEffect enemyColor, ParticalEffectManger particalEffectManger)
     {
         colorIndex = Random.Range(0, colors.Length);
         enemyColor.GlowColor = colors[colorIndex];
+#pragma warning disable CS0612 // Type or member is obsolete
         particalEffectManger.releaseCreateEnemyPartical(enemy.transform, colors[colorIndex]);
+#pragma warning restore CS0612 // Type or member is obsolete
     }
 
     private static void setReferance(EnemyStateManger enemy, out SpriteGlowEffect enemyColor, out ParticalEffectManger particalEffectManger)
