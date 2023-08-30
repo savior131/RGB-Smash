@@ -2,28 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SpriteGlow;
+using UnityEngine.Events;
 
 public class PlayerStateController : MonoBehaviour
 {
     [HideInInspector] public IPlayerStates currentPlayerTrailColor;
     IPlayerStates[] playerColorTrailStates = {new PlayerRedColorState() 
             , new PlayerGreenColorState() , new PlayerBlueColorState()};
-    [SerializeField] float changeSpeed;
-    [SerializeField] float spreadSpeed;
     TrailRenderer TrailColor;
-    SpriteRenderer whiteBackground;
-    SpriteGlowEffect glowyBackground;
-    Renderer fog;
-    Animator animator;
+    [SerializeField] UnityEvent colorChange;
 
-    public string redC = "red";
     private void Start()
     {
-        whiteBackground = GameObject.FindGameObjectWithTag("White Background").GetComponent<SpriteRenderer>();
-        glowyBackground = GameObject.FindGameObjectWithTag("Glowy Background").GetComponent<SpriteGlowEffect>();
-        animator= GameObject.FindGameObjectWithTag("Glowy Background").GetComponent<Animator>();
-        fog = GameObject.FindGameObjectWithTag("Fog").GetComponent<Renderer>();
-        TrailColor = GameObject.FindGameObjectWithTag("Trail").GetComponent<TrailRenderer>();
+        TrailColor = GetComponent<TrailRenderer>();
         setTrailColor(playerColorTrailStates[0]);
     }
     private void Update()
@@ -32,27 +23,22 @@ public class PlayerStateController : MonoBehaviour
         {
             
             setTrailColor(playerColorTrailStates[0]);
-            currentPlayerTrailColor.spread(animator);
-            
-            
+            colorChange.Invoke();
+            currentPlayerTrailColor.colorChange(TrailColor);
         }
         else if(Input.GetKeyDown(KeyCode.X))
         {
-            
             setTrailColor(playerColorTrailStates[1]);
-            currentPlayerTrailColor.spread(animator);
-
+            colorChange.Invoke();
+            currentPlayerTrailColor.colorChange(TrailColor);
         }
         else if(Input.GetKeyDown(KeyCode.C))
         {
-            
             setTrailColor(playerColorTrailStates[2]);
-            currentPlayerTrailColor.spread(animator);
-
+            colorChange.Invoke();
+            currentPlayerTrailColor.colorChange(TrailColor);
         }
-        currentPlayerTrailColor.colorChange(TrailColor, fog, whiteBackground, glowyBackground, changeSpeed);
 
-        
     }
     public void setTrailColor(IPlayerStates newTrailColor)
     {

@@ -28,6 +28,6 @@ public class SmashedEnemyColors : MonoBehaviour
     }
     void flyToPlayer(Transform player)
     {
-        smashed.transform.position = Vector2.MoveTowards(smashed.transform.position,player.position,Time.deltaTime);
+        //smashed.transform.position = Vector2.MoveTowards(smashed.transform.position,player.position,Time.deltaTime);
     }
 }

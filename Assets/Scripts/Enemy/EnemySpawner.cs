@@ -35,14 +35,16 @@ public class EnemySpawner : MonoBehaviour
     }
     IEnumerator spawner()
     {
-        for(int i = 0; i < enemyCount; i++)
+        while (true)
         {
-            enemyPool.Get();
+            for (int i = 0; i < enemyCount; i++)
+            {
+                enemyPool.Get();
+            }
+            yield return new WaitForSeconds(spawnTimer);
+            incrimentEnemyCount = !incrimentEnemyCount;
+            enemyCount = (incrimentEnemyCount) ? enemyCount + 1 : enemyCount;
+            spawnTimer = (spawnTimer > 5) ? spawnTimer - 0.1f : 5;     
         }
-        yield return new WaitForSeconds(spawnTimer);
-        incrimentEnemyCount = !incrimentEnemyCount;
-        enemyCount = (incrimentEnemyCount) ? enemyCount + 1 : enemyCount;
-        spawnTimer = (spawnTimer > 5) ? spawnTimer - 0.1f : 5;
-        StartCoroutine(spawner());
     }
 }

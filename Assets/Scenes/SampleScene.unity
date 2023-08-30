@@ -220,7 +220,7 @@ RectTransform:
   - {fileID: 1493309583}
   - {fileID: 1753574351}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -260,7 +260,7 @@ Transform:
   - {fileID: 1797727491}
   - {fileID: 1388988469}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &330718307
 GameObject:
@@ -272,6 +272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 330718309}
   - component: {fileID: 330718308}
+  - component: {fileID: 330718310}
   m_Layer: 0
   m_Name: white background
   m_TagString: White Background
@@ -346,6 +347,18 @@ Transform:
   m_Father: {fileID: 1482273374}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &330718310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330718307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294fb5cbe18c20247bf8caafef17e7fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +537,7 @@ GameObject:
   m_Component:
   - component: {fileID: 527459650}
   - component: {fileID: 527459651}
+  - component: {fileID: 527459652}
   m_Layer: 3
   m_Name: trail
   m_TagString: Trail
@@ -659,6 +673,69 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &527459652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527459649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7a4ed8229e8b5468a7f47a95f369ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1422091916}
+        m_TargetAssemblyTypeName: Glowybackground, Assembly-CSharp
+        m_MethodName: spread
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1422091916}
+        m_TargetAssemblyTypeName: Glowybackground, Assembly-CSharp
+        m_MethodName: changeColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 674225582}
+        m_TargetAssemblyTypeName: Fog, Assembly-CSharp
+        m_MethodName: changeColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 330718310}
+        m_TargetAssemblyTypeName: WhiteBackground, Assembly-CSharp
+        m_MethodName: changeColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &674225579
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,6 +746,7 @@ GameObject:
   m_Component:
   - component: {fileID: 674225581}
   - component: {fileID: 674225580}
+  - component: {fileID: 674225582}
   m_Layer: 0
   m_Name: Fog
   m_TagString: Fog
@@ -743,6 +821,18 @@ Transform:
   m_Father: {fileID: 1482273374}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &674225582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674225579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760cc51b97bb65f44baab6830c4f95ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &860148744
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,7 +1040,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &911870403
 MonoBehaviour:
@@ -1072,6 +1162,7 @@ GameObject:
   - component: {fileID: 1422091911}
   - component: {fileID: 1422091910}
   - component: {fileID: 1422091915}
+  - component: {fileID: 1422091916}
   m_Layer: 0
   m_Name: glowy background
   m_TagString: Glowy Background
@@ -1205,6 +1296,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1422091916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422091909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4455ed0f6689bf4dbbd3b5d52853974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1482273373
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,7 +1341,7 @@ Transform:
   - {fileID: 674225581}
   - {fileID: 1422091913}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1493309582
 GameObject:
@@ -1687,7 +1790,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1797727490
 GameObject:
@@ -1796,7 +1899,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1829599470
 MonoBehaviour:
@@ -2142,50 +2245,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb2656e80edf994a92813efac36d224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2127275048
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2127275050}
-  - component: {fileID: 2127275049}
-  m_Layer: 0
-  m_Name: State Manager
-  m_TagString: State Manager
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2127275049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2127275048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7a4ed8229e8b5468a7f47a95f369ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  changeSpeed: 2
-  spreadSpeed: 0.1
-  redC: red
---- !u!4 &2127275050
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2127275048}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5154998, y: -0.61649024, z: 0.0013927966}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

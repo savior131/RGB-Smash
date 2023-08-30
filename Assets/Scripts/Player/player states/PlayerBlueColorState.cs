@@ -7,12 +7,9 @@ using UnityEngine;
 public class PlayerBlueColorState : IPlayerStates
 {
 
-    public void colorChange(TrailRenderer newColor, Renderer fog, SpriteRenderer whiteBackground, SpriteGlowEffect glowyBackground, float changeSpeed)
+    public void colorChange(TrailRenderer newColor)
     {
-        Color color = Color.Lerp(newColor.startColor, new(0, 0, 1), Time.deltaTime * changeSpeed);
+        Color color = new Color(0, 0, 1);
         newColor.startColor = color;
-        fog.sharedMaterial.SetColor("_FogColor", color);
-        whiteBackground.color = color;
-        glowyBackground.GlowColor = (glowyBackground.AlphaThreshold < 0.1) ? new(1, 0, 0) : glowyBackground.GlowColor;
     }
 }
