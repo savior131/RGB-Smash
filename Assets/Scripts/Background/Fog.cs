@@ -11,16 +11,17 @@ public class Fog : MonoBehaviour
     {
         fog = GetComponent<Renderer>();
         trail = GameObject.FindGameObjectWithTag("Trail").GetComponent<TrailRenderer>();
+        fog.sharedMaterial.SetColor("_FogColor", new(1,0,0));
     }
 
     public void changeColor()
     {
-        StartCoroutine(delyChangeColor());
+        StartCoroutine(startChangeColor());
     }
 
-    IEnumerator delyChangeColor()
+    IEnumerator startChangeColor()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForEndOfFrame();
         fog.sharedMaterial.SetColor("_FogColor", trail.startColor);
     }
 }

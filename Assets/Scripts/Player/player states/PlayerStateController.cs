@@ -22,24 +22,21 @@ public class PlayerStateController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            
-            setTrailColor(playerColorTrailStates[0]);
+
+            StartCoroutine(startColorChange(0));
             backgoundChange.Invoke();
-            InvokeRepeating("colorChangeCoroutine" , 2f , 0.001f);
         }
         else if(Input.GetKeyDown(KeyCode.X))
         {
-            setTrailColor(playerColorTrailStates[1]);
+            StartCoroutine(startColorChange(1));
             backgoundChange.Invoke();
-            InvokeRepeating("colorChangeCoroutine", 2f, 0.001f);
         }
         else if(Input.GetKeyDown(KeyCode.C))
         {
-            setTrailColor(playerColorTrailStates[2]);
+            StartCoroutine(startColorChange(2));
             backgoundChange.Invoke();
-            InvokeRepeating("colorChangeCoroutine", 2f, 0.001f);
         }
-
+        colorChangeCoroutine();
     }
     public void setTrailColor(IPlayerStates newTrailColor)
     {
@@ -61,5 +58,11 @@ public class PlayerStateController : MonoBehaviour
     {
         currentPlayerTrailColor.colorChange(TrailColor);
         colorUpdate.Invoke();
+    }
+
+    IEnumerator startColorChange(int colorIndex)
+    {
+        yield return new WaitForSeconds(0.5f);
+        setTrailColor(playerColorTrailStates[colorIndex]);
     }
 }

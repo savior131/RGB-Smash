@@ -6,13 +6,13 @@ using UnityEngine;
 public class Glowybackground : MonoBehaviour
 {
     Animator animator;
-    TrailRenderer trail;
+    PlayerStateController trail;
     SpriteGlowEffect backgroundSprite;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        trail = GameObject.FindGameObjectWithTag("Trail").GetComponent<TrailRenderer>();
+        trail = GameObject.FindGameObjectWithTag("Trail").GetComponent<PlayerStateController>();
         backgroundSprite = GetComponent<SpriteGlowEffect>();
     }
     public void spread()
@@ -22,12 +22,22 @@ public class Glowybackground : MonoBehaviour
 
     public void changeColor()
     {
-        StartCoroutine(delyChangeColor());
+        StartCoroutine(startChangeColor());
     }
 
-    IEnumerator delyChangeColor()
+    private void setColorBackground()
+    {
+        if (trail.getPlayerColor() == "red")
+            backgroundSprite.GlowColor = new Color(1, 0, 0);
+        else if (trail.getPlayerColor() == "green")
+            backgroundSprite.GlowColor = new Color(0, 1, 0);
+        else if (trail.getPlayerColor() == "blue")
+            backgroundSprite.GlowColor = new Color(0, 0, 1);
+    }
+
+    IEnumerator startChangeColor()
     {
         yield return new WaitForSeconds(0.5f);
-        backgroundSprite.GlowColor = trail.startColor;
+        setColorBackground();
     }
 }

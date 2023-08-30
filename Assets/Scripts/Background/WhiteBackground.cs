@@ -14,12 +14,6 @@ public class WhiteBackground : MonoBehaviour
 
     public void changeColor()
     {
-        StartCoroutine(delyChangeColor());
-    }
-
-    IEnumerator delyChangeColor()
-    {
-        yield return new WaitForSeconds(0.5f);
         sprite.color = trail.startColor;
     }
 }
