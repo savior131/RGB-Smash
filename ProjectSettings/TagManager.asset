@@ -10,6 +10,7 @@ TagManager:
   - Fog
   - Glowy Background
   - State Manager
+  - Input System
   layers:
   - Default
   - TransparentFX

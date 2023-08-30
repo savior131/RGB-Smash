@@ -12,7 +12,6 @@ public class PlayerMovmentEditor : Editor
     SerializedProperty dashSpeed;
     SerializedProperty dashTime;
     SerializedProperty coolTimeDash;
-    SerializedProperty control;
 
     bool playerSpeedGroub = false , playerdash = false;
     #endregion
@@ -25,7 +24,6 @@ public class PlayerMovmentEditor : Editor
         dashSpeed = serializedObject.FindProperty("dashSpeed");
         dashTime = serializedObject.FindProperty("dashTime");
         coolTimeDash = serializedObject.FindProperty("coolTimeDash");
-        control = serializedObject.FindProperty("control");
         
     }
 
@@ -33,7 +31,6 @@ public class PlayerMovmentEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
-        EditorGUILayout.PropertyField(control);
         playerSpeedGroub = EditorGUILayout.BeginFoldoutHeaderGroup(playerSpeedGroub, "player speed");
         if(playerSpeedGroub)
         {

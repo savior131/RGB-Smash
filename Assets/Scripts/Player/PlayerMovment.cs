@@ -4,21 +4,14 @@ using UnityEngine;
 
 public class PlayerMovment : MonoBehaviour
 {
-    enum controls
-    {
-        mobile ,
-        pcAndGamepad ,
-    }
     #region movment data
     [SerializeField] float speed;
     [SerializeField] float decelaration;
     [SerializeField] float accelration;
     float initSpeed;
     #endregion
-    [SerializeField] controls control;
     #region refrance data
     Rigidbody2D playerRB;
-    IInputPlayer inputPlayer;
     public Vector3 playerDir;
     bool playerDash;
     #endregion
@@ -29,10 +22,13 @@ public class PlayerMovment : MonoBehaviour
     public bool isDash;
     bool canDash;
     #endregion
+    #region controls data
+    InputSystemManger playerInput;
+    #endregion
 
     private void Start()
     {
-        setInputSourse();
+        playerInput = GameObject.FindGameObjectWithTag("Input System").GetComponent<InputSystemManger>();
         playerRB = GetComponent<Rigidbody2D>();
         initSpeed = speed;
         canDash = true;
@@ -77,18 +73,9 @@ public class PlayerMovment : MonoBehaviour
     {
         return playerDir.magnitude == 0;
     }
-
-    private void setInputSourse()
-    {
-        if (control == controls.mobile)
-            inputPlayer = GetComponent<MobileController>();
-        else
-            inputPlayer = GetComponent<ActionsControl>();
-    }
-
     private void setPlayerInput()
     {
-        playerDir = inputPlayer.getMovmentAxis();
-        playerDash = inputPlayer.getDashInput();
+        playerDir = playerInput.getInputPlayerAxisMovment();
+        playerDash = playerInput.getinputPlayerDash();
     }
 }
