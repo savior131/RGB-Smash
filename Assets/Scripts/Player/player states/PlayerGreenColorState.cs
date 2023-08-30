@@ -10,7 +10,7 @@ public class PlayerGreenColorState : IPlayerStates
 
     public void colorChange(TrailRenderer newColor)
     {
-        Color color = new Color(0, 1, 0);;
+        Color color = Color.Lerp(newColor.startColor, new(0, 1, 0), Time.deltaTime);
         newColor.startColor = color;
     }
 }

@@ -10,7 +10,8 @@ public class PlayerStateController : MonoBehaviour
     IPlayerStates[] playerColorTrailStates = {new PlayerRedColorState() 
             , new PlayerGreenColorState() , new PlayerBlueColorState()};
     TrailRenderer TrailColor;
-    [SerializeField] UnityEvent colorChange;
+    [SerializeField] UnityEvent backgoundChange;
+    [SerializeField] UnityEvent colorUpdate;
 
     private void Start()
     {
@@ -23,20 +24,20 @@ public class PlayerStateController : MonoBehaviour
         {
             
             setTrailColor(playerColorTrailStates[0]);
-            colorChange.Invoke();
-            currentPlayerTrailColor.colorChange(TrailColor);
+            backgoundChange.Invoke();
+            InvokeRepeating("colorChangeCoroutine" , 2f , 0.001f);
         }
         else if(Input.GetKeyDown(KeyCode.X))
         {
             setTrailColor(playerColorTrailStates[1]);
-            colorChange.Invoke();
-            currentPlayerTrailColor.colorChange(TrailColor);
+            backgoundChange.Invoke();
+            InvokeRepeating("colorChangeCoroutine", 2f, 0.001f);
         }
         else if(Input.GetKeyDown(KeyCode.C))
         {
             setTrailColor(playerColorTrailStates[2]);
-            colorChange.Invoke();
-            currentPlayerTrailColor.colorChange(TrailColor);
+            backgoundChange.Invoke();
+            InvokeRepeating("colorChangeCoroutine", 2f, 0.001f);
         }
 
     }
@@ -54,5 +55,11 @@ public class PlayerStateController : MonoBehaviour
         else if (currentPlayerTrailColor is PlayerGreenColorState)
             return "green";
         return "null";
+    }
+
+    void colorChangeCoroutine()
+    {
+        currentPlayerTrailColor.colorChange(TrailColor);
+        colorUpdate.Invoke();
     }
 }

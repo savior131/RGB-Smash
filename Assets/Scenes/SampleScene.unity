@@ -685,7 +685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7a4ed8229e8b5468a7f47a95f369ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorChange:
+  backgoundChange:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1422091916}
@@ -700,8 +700,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1422091916}
-        m_TargetAssemblyTypeName: Glowybackground, Assembly-CSharp
+  colorUpdate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 330718310}
+        m_TargetAssemblyTypeName: WhiteBackground, Assembly-CSharp
         m_MethodName: changeColor
         m_Mode: 1
         m_Arguments:
@@ -724,8 +727,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 330718310}
-        m_TargetAssemblyTypeName: WhiteBackground, Assembly-CSharp
+      - m_Target: {fileID: 1422091916}
+        m_TargetAssemblyTypeName: Glowybackground, Assembly-CSharp
         m_MethodName: changeColor
         m_Mode: 1
         m_Arguments:
@@ -2290,7 +2293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1754524850
 MonoBehaviour:
   m_ObjectHideFlags: 0
