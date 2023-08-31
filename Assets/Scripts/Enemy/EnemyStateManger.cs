@@ -21,8 +21,12 @@ public class EnemyStateManger : MonoBehaviour
         currentState = enemyCreatState;
         enemyCreatState.setupStart(this, enemyColor, particalEffectManger, enemyPool);
         setRandomPosition();
-        score = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScore>();
-        playerColor = GameObject.FindGameObjectWithTag("Trail").GetComponent<PlayerStateController>();
+        if(GameObject.FindGameObjectWithTag("Player"))
+        {
+            score = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScore>();
+            playerColor = GameObject.FindGameObjectWithTag("Trail").GetComponent<PlayerStateController>();
+        }
+       
     }
 
     private void setRandomPosition()
