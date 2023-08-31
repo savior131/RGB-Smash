@@ -32,7 +32,7 @@ public class ColorCollector : MonoBehaviour
     {
         
         colorBoundaries();
-        Debug.Log("red" + RGBCapacitis[0] + " green " + RGBCapacitis[1] + "blue" + RGBCapacitis[2]);
+        //Debug.Log("red" + RGBCapacitis[0] + " green " + RGBCapacitis[1] + "blue" + RGBCapacitis[2]);
     }
     IEnumerator DrainCoolDown()
     {

@@ -39,30 +39,36 @@ public class EnemyAttackState : EnemyBaseState
 
     }
 
-    public override void setupWhenCollsion(EnemyStateManger enemy, Collision2D collision)
+    public override void setupWhenCollsion(EnemyStateManger enemy, Collision2D collision , PlayerScore score, PlayerStateController playerColor)
     {
         enemyRb.AddForce(force * enemyRb.velocity, ForceMode2D.Impulse);
         Camera.main.GetComponent<CameraShake>().Shake(0.1f, 1f, 5);
         if (collision.gameObject.tag == "Player")
-        {
-            GameObject trail = GameObject.FindGameObjectWithTag("Trail");
-            if (trail.GetComponent<PlayerStateController>().getPlayerColor() == Color.red && currentEnemyColor.r == 1)
+        {   
+            if (playerColor.getPlayerColor() == Color.red && currentEnemyColor.r == 1)
             {
                 enemy.swichEnemyState(enemy.enemyDestroyState);
+                score.increaseScore();
+                score.increaseCompo();
             }
-            else if (trail.GetComponent<PlayerStateController>().getPlayerColor() == Color.green && currentEnemyColor.g == 1)
+            else if (playerColor.getPlayerColor() == Color.green && currentEnemyColor.g == 1)
             {
                 enemy.swichEnemyState(enemy.enemyDestroyState);
+                score.increaseScore();
+                score.increaseCompo();
             }
-            else if (trail.GetComponent<PlayerStateController>().getPlayerColor() == Color.blue && currentEnemyColor.b == 1)
+            else if (playerColor.getPlayerColor() == Color.blue && currentEnemyColor.b == 1)
             {
                 enemy.swichEnemyState(enemy.enemyDestroyState);
+                score.increaseScore();
+                score.increaseCompo();
             }
             else
             {
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
                 player.GetComponent<PlayerHealth>().decreaseHealth();
                 enemy.swichEnemyState(enemy.enemyDestroyState);
+                score.resetCompo();
             }
             Camera.main.GetComponent<CameraShake>().Shake(0.3f, 1.8f, 20);
         }
