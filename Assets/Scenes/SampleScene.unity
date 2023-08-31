@@ -1075,7 +1075,7 @@ SpriteRenderer:
   m_SortingLayerID: 1545354889
   m_SortingLayer: -1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 9a20caf2c8a078543af24ccff60671dc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e09b1b6a2e0ded148b792b43fe9bab5b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1095,7 +1095,7 @@ Transform:
   m_GameObject: {fileID: 876436013}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.88, y: 0.88, z: 0.88}
+  m_LocalScale: {x: 0.79, y: 0.79, z: 0.79}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1482273374}
@@ -1999,7 +1999,7 @@ ParticleSystemForceField:
     m_DragCurve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2192,7 +2192,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.8
+  m_Radius: 0.3
 --- !u!1 &1684737244
 GameObject:
   m_ObjectHideFlags: 0
