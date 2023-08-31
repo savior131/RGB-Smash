@@ -14,11 +14,15 @@ public class EnemyStateManger : MonoBehaviour
     ParticalEffectManger particalEffectManger;
     IObjectPool<EnemyStateManger> enemyPool;
     int randX, randY;
+    PlayerScore score;
+    PlayerStateController playerColor;
     private void OnEnable()
     {
         currentState = enemyCreatState;
         enemyCreatState.setupStart(this, enemyColor, particalEffectManger, enemyPool);
         setRandomPosition();
+        score = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScore>();
+        playerColor = GameObject.FindGameObjectWithTag("Trail").GetComponent<PlayerStateController>();
     }
 
     private void setRandomPosition()
@@ -39,7 +43,7 @@ public class EnemyStateManger : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        currentState.setupWhenCollsion(this, collision);
+        currentState.setupWhenCollsion(this, collision , score , playerColor);
     }
 
     public void swichEnemyState(EnemyBaseState newState)
