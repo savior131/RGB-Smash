@@ -15,6 +15,10 @@ public class MenuManager : MonoBehaviour
     {
         Camera.main.GetComponent<CameraShake>().Shake(0.3f, 1.8f, 20);
     }
+    public void onBackPressed()
+    {
+        Camera.main.GetComponent<CameraShake>().Shake(0.3f, 1.8f, 20);
+    }
     public void onExitPress()
     {
         Application.Quit();
