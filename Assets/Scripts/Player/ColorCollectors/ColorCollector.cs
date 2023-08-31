@@ -10,7 +10,7 @@ public class ColorCollector : MonoBehaviour
     float maxCapacitis = 5f;
     float[] RGBCapacitis = { 2.5f, 2.5f, 2.5f };
     float amountCollected = 0.01f;
-    float ammountDrained = 0.02f;
+    float ammountDrained = 0.01f;
     [SerializeField] UnityEvent colorChange;
 
     public event Action onRedCollect;
