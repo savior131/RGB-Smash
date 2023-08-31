@@ -12,6 +12,7 @@ TagManager:
   - State Manager
   - Input System
   - Attractor
+  - Enemy
   layers:
   - Default
   - TransparentFX

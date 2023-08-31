@@ -33,6 +33,30 @@ public class EnemySpawner : MonoBehaviour
     {
         StartCoroutine(spawner());
     }
+    private void Update()
+    {
+
+        GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag("Enemy");
+        bool allDisabled = true;
+        foreach (GameObject obj in taggedObjects)
+        {
+            if (obj.activeSelf)
+            {
+                allDisabled = false;
+                break; 
+            }
+        }
+        if (allDisabled)
+        {
+            allDisabled = false;
+            incrimentEnemyCount = !incrimentEnemyCount;
+            enemyCount = (incrimentEnemyCount) ? enemyCount + 1 : enemyCount;
+            spawnTimer = (spawnTimer > 5) ? spawnTimer - 0.1f : 5;
+            StopAllCoroutines();
+            StartCoroutine(spawner());
+        }
+            
+    }
     IEnumerator spawner()
     {
         while (true)
