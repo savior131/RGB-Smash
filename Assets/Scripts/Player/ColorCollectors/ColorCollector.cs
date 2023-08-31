@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,11 +7,15 @@ using UnityEngine.ParticleSystemJobs;
 public class ColorCollector : MonoBehaviour
 {
     PlayerStateController playerStateController;
-    
-    float[] RGBCapacitis = { 1f, 1f, 1f };
+    float maxCapacitis = 5f;
+    float[] RGBCapacitis = { 2.5f, 2.5f, 2.5f };
     float amountCollected = 0.01f;
-    float ammountDrained = 0.05f;
+    float ammountDrained = 0.02f;
     [SerializeField] UnityEvent colorChange;
+
+    public event Action onRedCollect;
+    public event Action onGreenCollect;
+    public event Action onBlueCollect;
     public void redCollect()
     {
         RGBCapacitis[0] += amountCollected;
@@ -32,7 +37,10 @@ public class ColorCollector : MonoBehaviour
     {
         
         colorBoundaries();
-        //Debug.Log("red" + RGBCapacitis[0] + " green " + RGBCapacitis[1] + "blue" + RGBCapacitis[2]);
+        onBlueCollect();
+        onGreenCollect();
+        onRedCollect();
+        Debug.Log("red" + RGBCapacitis[0] / maxCapacitis + " green " + RGBCapacitis[1] / maxCapacitis + "blue" + RGBCapacitis[2] / maxCapacitis);
     }
     IEnumerator DrainCoolDown()
     {
@@ -62,15 +70,32 @@ public class ColorCollector : MonoBehaviour
                     colorChange.Invoke();
                 }
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.05f);
         }
     }
     void colorBoundaries()
     {
         for (int i = 0; i < RGBCapacitis.Length; i++)
         {
-            RGBCapacitis[i] = Mathf.Clamp(RGBCapacitis[i],0,20);
+            RGBCapacitis[i] = Mathf.Clamp(RGBCapacitis[i],0,5);
         }
+    }
+
+    public float getRedCapacitis()
+    {
+        return RGBCapacitis[0];
+    }
+    public float getGreenCapacitis()
+    {
+        return RGBCapacitis[1];
+    }
+    public float getBlueCapacitis() 
+    {
+        return RGBCapacitis[2];
+    }
+    public float getMaxCapacitis() 
+    {
+        return maxCapacitis;
     }
 
 }
