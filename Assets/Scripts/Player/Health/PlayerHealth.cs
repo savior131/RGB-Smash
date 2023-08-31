@@ -5,11 +5,6 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] int health;
-
-    private void Update()
-    {
-        Debug.Log(health);
-    }
     public void decreaseHealth()
     {
         health--;

@@ -10,7 +10,7 @@ public class ColorCollector : MonoBehaviour
     float[] RGBCapacitis = { 1f, 1f, 1f };
     float amountCollected = 0.01f;
     float ammountDrained = 0.05f;
-    
+    [SerializeField] UnityEvent colorChange;
     public void redCollect()
     {
         RGBCapacitis[0] += amountCollected;
@@ -41,17 +41,26 @@ public class ColorCollector : MonoBehaviour
             if (playerStateController.getPlayerColor() == Color.red)
             {
                 RGBCapacitis[0] -= ammountDrained;
-                if (RGBCapacitis[0] == 0);
-
+                if (RGBCapacitis[0] <= 0)
+                {
+                    colorChange.Invoke();
+                }
             }
             else if (playerStateController.getPlayerColor() == Color.green)
             {
                 RGBCapacitis[1] -= ammountDrained;
-                if (RGBCapacitis[1] == 0);
+                if (RGBCapacitis[1] <= 0)
+                {
+                    colorChange.Invoke();
+                }
             }
             else if (playerStateController.getPlayerColor() == Color.blue)
             {
                 RGBCapacitis[2] -= ammountDrained;
+                if (RGBCapacitis[2] <= 0)
+                {
+                    colorChange.Invoke();
+                }
             }
             yield return new WaitForSeconds(0.5f);
         }

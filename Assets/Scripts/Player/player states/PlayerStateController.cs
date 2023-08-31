@@ -15,6 +15,7 @@ public class PlayerStateController : MonoBehaviour
     bool playerChangeColor;
     bool canChangeColor = true;
     int colorIndex = 0;
+    bool canAutoSwitch = false;
     InputSystemManger playerInput;
     private void Start()
     {
@@ -25,14 +26,20 @@ public class PlayerStateController : MonoBehaviour
     private void Update()
     {
         setPlayerInput();
-        if (playerChangeColor && canChangeColor)
-        {
-            colorChanger();
-        }
+        playerSwitchColor();
         colorChange();
     }
 
-    public void colorChanger()
+
+    void playerSwitchColor()
+    {
+        if (playerChangeColor && canChangeColor)
+        {
+            switchColor();
+        }
+    }
+
+    private void switchColor()
     {
         setColorIndex();
         StartCoroutine(startColorChange(colorIndex));
@@ -48,7 +55,10 @@ public class PlayerStateController : MonoBehaviour
 
     private void setPlayerInput()
     {
-        playerChangeColor = playerInput.getinputPlayerChangeColor();
+        if(!canAutoSwitch)
+        {
+            playerChangeColor = playerInput.getinputPlayerChangeColor();
+        }
     }
 
     public void setTrailColor(IPlayerStates newTrailColor)
@@ -84,5 +94,17 @@ public class PlayerStateController : MonoBehaviour
         canChangeColor = false;
         yield return new WaitForSeconds(1f);
         canChangeColor = true;
+    }
+    public void AutomaticSwitchColor()
+    {
+        StartCoroutine(makeAutomaticSwitchColor());
+    }
+    IEnumerator makeAutomaticSwitchColor()
+    {
+        canAutoSwitch = true;
+        playerChangeColor = true;
+        yield return new WaitForSeconds(0.5f);
+        playerChangeColor = false;
+        canAutoSwitch = false;
     }
 }
