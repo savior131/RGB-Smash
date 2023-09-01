@@ -5,26 +5,14 @@ using UnityEngine.InputSystem;
 
 public abstract class IInputPlayer : MonoBehaviour
 {
-    bool inputDash;
-    bool inputColorChnage;
+    protected bool inputDash;
+    protected bool inputColorChnage;
     protected Vector3 playerDir;
     public abstract Vector3 getMovmentAxis();
+    public abstract bool getDashInput();
 
-    public bool getColorChangeInput()
-    {
-        return inputColorChnage;
-    }
-    public bool getDashInput()
-    {
-        return inputDash;
-    }
+    public abstract bool getColorChangeInput();
 
-    void OnDash(InputValue value)
-    {
-        inputDash = value.isPressed;
-    }
-    void OnColorChange(InputValue value)
-    {
-        inputColorChnage = value.isPressed;
-    }
+
+
 }
