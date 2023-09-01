@@ -43,7 +43,11 @@ Material:
     m_Floats:
     - _FogSize: 6
     m_Colors:
+<<<<<<< Updated upstream
     - _FogColor: {r: 1, g: 0.050980393, b: 0.050980393, a: 1}
+=======
+    - _FogColor: {r: 0.16862746, g: 0.8352941, b: 0.08235294, a: 1}
+>>>>>>> Stashed changes
     - _FogSpeed: {r: 0.2, g: 0.1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8063361860909791117
