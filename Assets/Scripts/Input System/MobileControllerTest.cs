@@ -5,16 +5,24 @@ using UnityEngine;
 public class MobileControllerTest : MonoBehaviour
 {
     Touch touch;
-
+    bool firstTap= false;
     private void Update()
     {
+
         if(Input.touchCount > 0)
         {
-            if (touch.phase == TouchPhase.Ended)
+            touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began&&!firstTap)
             {
-                Debug.Log("hallow");
+                firstTap = true;
+                touch.phase = TouchPhase.Stationary;
                 StartCoroutine(doubleTab());
                 
+            }
+            if (touch.phase==TouchPhase.Began&&firstTap)
+            {
+                firstTap=false;
+                Debug.Log("double tap 3");
             }
 
         }    
@@ -22,14 +30,11 @@ public class MobileControllerTest : MonoBehaviour
 
     IEnumerator doubleTab()
     {
-        yield return new WaitForSeconds(0.25f);
-        if (touch.phase == TouchPhase.Began)
+        yield return new WaitForSeconds(0.2f);
+        if(touch.phase == TouchPhase.Ended&&firstTap)
         {
-            Debug.Log("player tab");
+            Debug.Log("Hello");
         }
-        else if(touch.phase == TouchPhase.Ended)
-        {
-            Debug.Log("player tab");
-        }
+        firstTap = false;
     }
 }
