@@ -10,7 +10,6 @@ public class EnemySpawner : MonoBehaviour
     IObjectPool<EnemyStateManger> enemyPool;
     float spawnTimer=20;
     int enemyCount=6;
-    bool incrimentEnemyCount=false;
     bool StillSpawning = true;
     private void Awake()
     {
@@ -53,8 +52,7 @@ public class EnemySpawner : MonoBehaviour
         if (allDisabled&&!StillSpawning)
         {
             allDisabled = false;
-            incrimentEnemyCount = !incrimentEnemyCount;
-            enemyCount = (incrimentEnemyCount) ? enemyCount + 1 : enemyCount;
+            enemyCount += 1;
             spawnTimer = (spawnTimer > 5) ? spawnTimer - 0.1f : 5;
             StopAllCoroutines();
             StartCoroutine(spawner());
@@ -70,8 +68,7 @@ public class EnemySpawner : MonoBehaviour
                 enemyPool.Get();
             }
             yield return new WaitForSeconds(spawnTimer);
-            incrimentEnemyCount = !incrimentEnemyCount;
-            enemyCount = (incrimentEnemyCount) ? enemyCount + 1 : enemyCount;
+            enemyCount += 1;
             spawnTimer = (spawnTimer > 5) ? spawnTimer - 0.1f : 5;     
         }
     }

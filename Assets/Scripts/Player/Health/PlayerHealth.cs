@@ -6,21 +6,11 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] int health;
-
-    public event Action onHealthChange;
-
-    AudioPlayer audioPlayer;
-
+    [SerializeField] ParticleSystem explotion;
     [SerializeField] SpriteGlowEffect playerSprite;
+    public event Action onHealthChange;
     bool canDamegePlayer = true;
-    private void Start()
-    {
-        audioPlayer = GameObject.FindGameObjectWithTag("Audio Player").GetComponent<AudioPlayer>();
-    }
-    private void Update()
-    {
-        Debug.Log(canDamegePlayer);
-    }
+
     public void decreaseHealth()
     {
         if (canDamegePlayer)
@@ -29,10 +19,10 @@ public class PlayerHealth : MonoBehaviour
             if (onHealthChange != null) onHealthChange();
             if (health < 1)
             {
-                audioPlayer.playDestoryPlayerEffect();
+                explotion.transform.position = transform.position;
+                explotion.Play();
                 Destroy(gameObject);
             }
-            audioPlayer.playPlayerHeartEffect();
             StartCoroutine(coolDown());
         }
     }
@@ -41,7 +31,6 @@ public class PlayerHealth : MonoBehaviour
     {
         return health;
     }
-
     IEnumerator coolDown()
     {
         canDamegePlayer = false;
@@ -49,12 +38,12 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         StopAllCoroutines();
         playerSprite.AlphaThreshold = 1;
-        canDamegePlayer= true;
+        canDamegePlayer = true;
     }
 
     IEnumerator coolDownEffect()
     {
-        while (true) 
+        while (true)
         {
             playerSprite.AlphaThreshold = 0;
             yield return new WaitForSeconds(0.1f);
