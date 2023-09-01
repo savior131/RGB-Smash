@@ -8,7 +8,7 @@ public class LevelLoader : MonoBehaviour
 
     void Start()
     {
-        transition = GameObject.FindGameObjectWithTag("Level Loader").GetComponent<Animator>();  
+        transition = GameObject.FindGameObjectWithTag("Level Loader").GetComponent<Animator>();
     }
     public void LoadThatLevel(int level)
     {

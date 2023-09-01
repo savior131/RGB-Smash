@@ -24,13 +24,13 @@ public class ScorePresenter : MonoBehaviour
     private void setCompoTextUI()
     {
         compoText.text = space + playerScore.getCompo();
-        if (playerScore.getScore() >= 10000)
+        if (playerScore.getScore() >= 9999)
             space = "         X";
-        else if (playerScore.getScore() >= 1000)
+        else if (playerScore.getScore() >= 999)
             space = "      X";
-        else if(playerScore.getScore() >= 100)
+        else if(playerScore.getScore() >= 99)
             space = "    X";
-        else if(playerScore.getScore() >= 10)
+        else if(playerScore.getScore() >= 9)
             space = "  X";
         else if (playerScore.getScore() >= 0)
             space = " X";
