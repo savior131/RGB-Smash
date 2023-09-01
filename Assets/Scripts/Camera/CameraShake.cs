@@ -1,17 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class CameraShake : MonoBehaviour
 {
     private Vector3 originalPosition;
     private Coroutine shakeCoroutine;
 
+    [SerializeField] string[] layersToRemovePause;
+    [SerializeField] string[] layersToAddContinue;
+    [SerializeField]
+    Volume[] volumes;
+
     private void Awake()
     {
         originalPosition = transform.localPosition;
     }
+    public void pauseVolume(bool True)
+    {
+        if (True)
+        {
+            volumes[0].enabled = false;
+            volumes[1].enabled = true;
+            foreach (string layerName in layersToRemovePause)
+            {
+                int layerMaskToRemove = 1 << LayerMask.NameToLayer(layerName);
+                Camera.main.cullingMask &= ~layerMaskToRemove;
+            }
 
+        }
+        else
+        {
+            volumes[1].enabled = false;
+            volumes[0].enabled = true;
+            foreach (string layerName in layersToAddContinue)
+            {
+                int layerMaskToAdd = 1 << LayerMask.NameToLayer(layerName);
+                Camera.main.cullingMask |= layerMaskToAdd;
+            }
+        }
+    }
     public void Shake(float duration, float magnitude, float speed)
     {
         if (shakeCoroutine != null)

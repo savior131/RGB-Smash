@@ -14,7 +14,7 @@ TagManager:
   - Attractor
   - Enemy
   - Level Loader
-  - Audio Player
+  - UICamera
   layers:
   - Default
   - TransparentFX

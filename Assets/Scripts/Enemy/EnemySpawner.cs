@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -10,8 +11,10 @@ public class EnemySpawner : MonoBehaviour
     float spawnTimer=20;
     int enemyCount=6;
     bool incrimentEnemyCount=false;
+    bool StillSpawning = true;
     private void Awake()
     {
+        
         enemyPool = new ObjectPool<EnemyStateManger>(createEnemy , OnGet , OnReleas);
     }
     private EnemyStateManger createEnemy()
@@ -31,7 +34,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(spawner());
+        StartCoroutine(waitBeforeCreate());
+        
     }
     private void Update()
     {
@@ -46,7 +50,7 @@ public class EnemySpawner : MonoBehaviour
                 break; 
             }
         }
-        if (allDisabled)
+        if (allDisabled&&!StillSpawning)
         {
             allDisabled = false;
             incrimentEnemyCount = !incrimentEnemyCount;
@@ -70,5 +74,12 @@ public class EnemySpawner : MonoBehaviour
             enemyCount = (incrimentEnemyCount) ? enemyCount + 1 : enemyCount;
             spawnTimer = (spawnTimer > 5) ? spawnTimer - 0.1f : 5;     
         }
+    }
+    IEnumerator waitBeforeCreate()
+    {
+        StillSpawning = true;
+        yield return new WaitForSeconds(1f);
+        StillSpawning = false;
+        StartCoroutine(spawner());
     }
 }
