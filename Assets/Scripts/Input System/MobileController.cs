@@ -5,16 +5,18 @@ using UnityEngine;
 public class MobileController : IInputPlayer
 {
     [SerializeField] VariableJoystick variableJoystick;
+    Vector3 touchPosition;
     Touch touch;
     bool firstTap= false;
     bool mobileDashInput;
     bool mobileChangeColorInput;
     private void Update()
     {
-
-        if(Input.touchCount > 0)
+        Debug.LogWarning(mobileDashInput);
+        if (Input.touchCount > 0)
         {
-            touch = Input.GetTouch(0);
+            touch = Input.GetTouch(Input.touchCount - 1);
+            touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             if(touch.position.x > 0)
             {
                 if (touch.phase == TouchPhase.Began && !firstTap)
@@ -51,7 +53,7 @@ public class MobileController : IInputPlayer
     IEnumerator doubleTab()
     {
         yield return new WaitForSeconds(0.2f);
-        if(touch.phase == TouchPhase.Ended&&firstTap)
+        if (touch.phase == TouchPhase.Ended&&firstTap)
         {
             StartCoroutine(playerPressedDash());
         }
