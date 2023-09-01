@@ -13,7 +13,7 @@ public class EnemyStateManger : MonoBehaviour
     SpriteGlowEffect enemyColor;
     ParticalEffectManger particalEffectManger;
     IObjectPool<EnemyStateManger> enemyPool;
-    int randX, randY;
+    float randomX, randomY;
     PlayerScore score;
     PlayerStateController playerColor;
     AudioPlayer audioplayer;
@@ -32,9 +32,15 @@ public class EnemyStateManger : MonoBehaviour
 
     private void setRandomPosition()
     {
-        randX = Random.Range(-24, 24);
-        randY = Random.Range(-12, 12);
-        transform.position = new Vector3(randX, randY, 0);
+        float cameraHeight = Camera.main.orthographicSize * 2f;
+        float cameraWidth = cameraHeight * Camera.main.aspect;
+
+        Vector2 cameraPosition = Camera.main.transform.position;
+
+        // Calculate random spawn point within the camera boundaries
+        randomX = Random.Range(cameraPosition.x - cameraWidth / 2f, cameraPosition.x + cameraWidth / 2f);
+        randomY = Random.Range(cameraPosition.y - cameraHeight / 2f, cameraPosition.y + cameraHeight / 2f);
+        transform.position = new Vector3(randomX, randomY, 0);
     }
 
     private void Update()
