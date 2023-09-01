@@ -7,9 +7,6 @@ public class AudioPlayer : SingltonPattern
     [Header("Dash")]
     [SerializeField] AudioClip DashClip;
     [SerializeField][Range(0, 1)] float volume = 1.0f;
-    [Header("creat enemy")]
-    [SerializeField] AudioClip creatEnemyClip;
-    [SerializeField][Range(0, 1)] float creatEnemyVolume = 1.0f;
     [Header("destroy enemy")]
     [SerializeField] AudioClip destroyEnemyClip;
     [SerializeField][Range(0, 1)] float destroyEnemyVolume = 1.0f;
@@ -19,15 +16,6 @@ public class AudioPlayer : SingltonPattern
     [Header("destroy player")]
     [SerializeField] AudioClip destroyPlayerClip;
     [SerializeField][Range(0, 1)] float destroyPlayerVolume = 1.0f;
-    [Header("enemy hit")]
-    [SerializeField] AudioClip enemyHitClip;
-    [SerializeField][Range(0, 1)] float enemyHitVolume = 1.0f;
-    [Header("color change")]
-    [SerializeField] AudioClip colorChangeClip;
-    [SerializeField][Range(0, 1)] float colorChangeVolume = 1.0f;
-    [Header("Alarm Color Change")]
-    [SerializeField] AudioClip alarmColorChangeClip;
-    [SerializeField][Range(0, 1)] float alarmColorChangeVolume = 1.0f;
     [Header("Music BackGround")]
     [SerializeField] AudioSource MusicBackGround;
 
@@ -44,10 +32,6 @@ public class AudioPlayer : SingltonPattern
     {
         AudioSource.PlayClipAtPoint(destroyEnemyClip, Camera.main.transform.position, destroyEnemyVolume);
     }
-    public void playCreatEnemyEffect()
-    {
-        AudioSource.PlayClipAtPoint(creatEnemyClip, Camera.main.transform.position, creatEnemyVolume);
-    }
     public void playPlayerHeartEffect()
     {
         AudioSource.PlayClipAtPoint(playerHeartClip, Camera.main.transform.position, playerHeartVolume);
@@ -56,19 +40,6 @@ public class AudioPlayer : SingltonPattern
     {
         AudioSource.PlayClipAtPoint(destroyPlayerClip, Camera.main.transform.position, destroyPlayerVolume);
     }
-    public void playEnemyHitEffect()
-    {
-        AudioSource.PlayClipAtPoint(enemyHitClip, Camera.main.transform.position, enemyHitVolume);
-    }
-    public void playColorChangeEffect()
-    {
-        AudioSource.PlayClipAtPoint(colorChangeClip, Camera.main.transform.position, colorChangeVolume);
-    }
-    public void playAlarmColorChnageEffect()
-    {
-        AudioSource.PlayClipAtPoint(alarmColorChangeClip, Camera.main.transform.position, alarmColorChangeVolume);
-    }
-
     public void decreaseVolumeMusicBackGround()
     {
         StartCoroutine(DecreasVolumeMusicBackGround());
@@ -83,7 +54,7 @@ public class AudioPlayer : SingltonPattern
         while (true) 
         {
             MusicBackGround.volume += 0.01f;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.03f);
             if(MusicBackGround.volume >= 1)
                 StopAllCoroutines();
         }
@@ -95,7 +66,7 @@ public class AudioPlayer : SingltonPattern
         {
             MusicBackGround.volume -= 0.01f;
             yield return new WaitForSeconds(0.01f);
-            if (MusicBackGround.volume <= 0.1f)
+            if (MusicBackGround.volume <= 0.3f)
                 StopAllCoroutines();
         }
     }

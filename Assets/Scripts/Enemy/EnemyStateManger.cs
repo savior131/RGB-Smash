@@ -16,6 +16,7 @@ public class EnemyStateManger : MonoBehaviour
     int randX, randY;
     PlayerScore score;
     PlayerStateController playerColor;
+    AudioPlayer audioplayer;
     private void OnEnable()
     {
         currentState = enemyCreatState;
@@ -25,8 +26,8 @@ public class EnemyStateManger : MonoBehaviour
         {
             score = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScore>();
             playerColor = GameObject.FindGameObjectWithTag("Trail").GetComponent<PlayerStateController>();
+            audioplayer = GameObject.FindGameObjectWithTag("Audio Player").GetComponent<AudioPlayer>();
         }
-       
     }
 
     private void setRandomPosition()
@@ -47,7 +48,7 @@ public class EnemyStateManger : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        currentState.setupWhenCollsion(this, collision , score , playerColor);
+        currentState.setupWhenCollsion(this, collision , score , playerColor , audioplayer);
     }
 
     public void swichEnemyState(EnemyBaseState newState)

@@ -32,7 +32,7 @@ public class EnemyDestroyState : EnemyBaseState
     {
 
     }
-    public override void setupWhenCollsion(EnemyStateManger enemy, Collision2D collision, PlayerScore score, PlayerStateController playerColor)
+    public override void setupWhenCollsion(EnemyStateManger enemy, Collision2D collision, PlayerScore score, PlayerStateController playerColor, AudioPlayer audioPlayer)
     {
         
     }
