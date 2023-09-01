@@ -9,23 +9,7 @@ public class ActionsControl : IInputPlayer
     {
         return playerDir;
     }
-    public override bool getColorChangeInput()
-    {
-        return inputColorChnage;
-    }
-    public override bool getDashInput()
-    {
-        return inputDash;
-    }
 
-    void OnDash(InputValue value)
-    {
-        inputDash = value.isPressed;
-    }
-    void OnColorChange(InputValue value)
-    {
-        inputColorChnage = value.isPressed;
-    }
     void OnMove(InputValue value)
     {
         playerDir = value.Get<Vector2>();
