@@ -15,7 +15,6 @@ public class PlayerScore : MonoBehaviour
     private void Start()
     {
         comboTimer = resetCompoTimer;
-        onCompoIncreace();
     }
 
     private void Update()
