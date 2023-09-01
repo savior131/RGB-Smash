@@ -11,19 +11,23 @@ public class MobileController : IInputPlayer
     bool mobileChangeColorInput;
     private void Update()
     {
+
         if(Input.touchCount > 0)
         {
             touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began&&!firstTap)
+            if(touch.position.x > 0)
             {
-                firstTap = true;
-                touch.phase = TouchPhase.Stationary;
-                StartCoroutine(doubleTab());
-            }
-            if (touch.phase==TouchPhase.Began&&firstTap)
-            {
-                firstTap=false;
-                StartCoroutine(playerPressedChangeColor());
+                if (touch.phase == TouchPhase.Began && !firstTap)
+                {
+                    firstTap = true;
+                    touch.phase = TouchPhase.Stationary;
+                    StartCoroutine(doubleTab());
+                }
+                if (touch.phase == TouchPhase.Began && firstTap)
+                {
+                    firstTap = false;
+                    StartCoroutine(playerPressedChangeColor());
+                }
             }
         }
     }

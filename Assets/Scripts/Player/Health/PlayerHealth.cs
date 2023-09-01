@@ -3,6 +3,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] int health;
@@ -10,7 +12,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] SpriteGlowEffect playerSprite;
     public event Action onHealthChange;
     bool canDamegePlayer = true;
-
+    [SerializeField] UnityEvent onPlayerDeath;
     public void decreaseHealth()
     {
         if (canDamegePlayer)
@@ -22,9 +24,15 @@ public class PlayerHealth : MonoBehaviour
                 explotion.transform.position = transform.position;
                 explotion.Play();
                 Destroy(gameObject);
+                Invoke("playerDeath", 1f);
             }
             StartCoroutine(coolDown());
         }
+    }
+
+    void playerDeath()
+    {
+        onPlayerDeath.Invoke();
     }
 
     public int getPlayerHealth()
