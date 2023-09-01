@@ -512,6 +512,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 514223963}
+        m_TargetAssemblyTypeName: AudioPlayer, Assembly-CSharp
+        m_MethodName: increaseVolumeBGMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &126867527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -882,6 +894,164 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 296412530}
   m_CullTransparentMesh: 1
+--- !u!1 &514223962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 514223964}
+  - component: {fileID: 514223963}
+  - component: {fileID: 514223965}
+  m_Layer: 0
+  m_Name: AudioPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &514223963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514223962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5b2c6ba0e6830e42b9fe38a4de38a57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DashClip: {fileID: 0}
+  volume: 1
+  creatEnemyClip: {fileID: 0}
+  creatEnemyVolume: 1
+  destroyEnemyClip: {fileID: 0}
+  destroyEnemyVolume: 1
+  playerHeartClip: {fileID: 0}
+  playerHeartVolume: 1
+  destroyPlayerClip: {fileID: 0}
+  destroyPlayerVolume: 1
+  enemyHitClip: {fileID: 0}
+  enemyHitVolume: 1
+  colorChangeClip: {fileID: 0}
+  colorChangeVolume: 1
+  alarmColorChangeClip: {fileID: 0}
+  alarmColorChangeVolume: 1
+  MusicBackGround: {fileID: 514223965}
+--- !u!4 &514223964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514223962}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &514223965
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514223962}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 33dd5d4e570548d43b8883c8d7292686, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &544161275
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,7 +1149,7 @@ RectTransform:
   - {fileID: 1428679569}
   - {fileID: 1350778341}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1363,6 +1533,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 514223963}
+        m_TargetAssemblyTypeName: AudioPlayer, Assembly-CSharp
+        m_MethodName: decreaseVolumeMusicBackGround
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &958999657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1661,7 +1843,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1184158678
 GameObject:
@@ -1894,7 +2076,7 @@ RectTransform:
   m_Children:
   - {fileID: 85355326}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2701,6 +2883,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 514223963}
+        m_TargetAssemblyTypeName: AudioPlayer, Assembly-CSharp
+        m_MethodName: decreaseVolumeMusicBackGround
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!212 &560988738324028547
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3080,7 +3274,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5073272215500082295
 GameObject:
@@ -3258,7 +3452,7 @@ Transform:
   - {fileID: 3582544331164866722}
   - {fileID: 2616317499643901680}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7470130902609010317
 Animator:
@@ -3299,19 +3493,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7978311706880533576, guid: a84259aa1d34cec4e9b497e22608b778, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7978311706880533576, guid: a84259aa1d34cec4e9b497e22608b778, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 28.517899
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7978311706880533576, guid: a84259aa1d34cec4e9b497e22608b778, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.8540382
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7978311706880533576, guid: a84259aa1d34cec4e9b497e22608b778, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.100767285
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7978311706880533576, guid: a84259aa1d34cec4e9b497e22608b778, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3371,19 +3565,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3925558587463001929, guid: 91b49406f2d689c4e9a273ba95c22f1c, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3925558587463001929, guid: 91b49406f2d689c4e9a273ba95c22f1c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.75503
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3925558587463001929, guid: 91b49406f2d689c4e9a273ba95c22f1c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.3859973
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3925558587463001929, guid: 91b49406f2d689c4e9a273ba95c22f1c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.3230414
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3925558587463001929, guid: 91b49406f2d689c4e9a273ba95c22f1c, type: 3}
       propertyPath: m_LocalRotation.w

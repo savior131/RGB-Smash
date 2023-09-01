@@ -4,8 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class MenuManager : MonoBehaviour
+public class MenuManager : SingltonPattern
 {
+    private void Start()
+    {
+        mangeSelgalton();
+    }
     public void onStartPress()
     {
         Camera.main.GetComponent<CameraShake>().Shake(0.3f, 1.8f, 20);
