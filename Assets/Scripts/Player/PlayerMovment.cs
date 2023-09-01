@@ -25,10 +25,12 @@ public class PlayerMovment : MonoBehaviour
     #region controls data
     InputSystemManger playerInput;
     #endregion
+    AudioPlayer audioPlayer;
 
     private void Start()
     {
         playerInput = GameObject.FindGameObjectWithTag("Input System").GetComponent<InputSystemManger>();
+        audioPlayer = GameObject.FindGameObjectWithTag("Audio Player").GetComponent<AudioPlayer>();
         playerRB = GetComponent<Rigidbody2D>();
         initSpeed = speed;
         canDash = true;
@@ -61,6 +63,7 @@ public class PlayerMovment : MonoBehaviour
 
     IEnumerator startDashCoroutines()
     {
+        audioPlayer.playDashSoundEffect();
         isDash = true;
         canDash = false;
         playerRB.velocity = playerDir * dashSpeed;

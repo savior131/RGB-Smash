@@ -12,7 +12,7 @@ public abstract class EnemyBaseState
     public abstract void setupUpdate(EnemyStateManger enemy);
     public abstract void setupFixedUpdate(EnemyStateManger enemy);
 
-    public abstract void setupWhenCollsion(EnemyStateManger enemy , Collision2D collision , PlayerScore score , PlayerStateController playerColor);
+    public abstract void setupWhenCollsion(EnemyStateManger enemy , Collision2D collision , PlayerScore score , PlayerStateController playerColor , AudioPlayer audioPlayer);
 
 }
 

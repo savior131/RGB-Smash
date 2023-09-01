@@ -39,7 +39,7 @@ public class EnemyAttackState : EnemyBaseState
 
     }
 
-    public override void setupWhenCollsion(EnemyStateManger enemy, Collision2D collision , PlayerScore score, PlayerStateController playerColor)
+    public override void setupWhenCollsion(EnemyStateManger enemy, Collision2D collision , PlayerScore score, PlayerStateController playerColor, AudioPlayer audioPlayer)
     {
         enemyRb.AddForce(force * enemyRb.velocity, ForceMode2D.Impulse);
         Camera.main.GetComponent<CameraShake>().Shake(0.1f, 1f, 5);
@@ -70,6 +70,7 @@ public class EnemyAttackState : EnemyBaseState
                 enemy.swichEnemyState(enemy.enemyDestroyState);
                 score.resetCompo();
             }
+            audioPlayer.playDestoryEnemyEffect();
             Camera.main.GetComponent<CameraShake>().Shake(0.3f, 1.8f, 20);
         }
     }

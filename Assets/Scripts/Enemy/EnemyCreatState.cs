@@ -51,7 +51,7 @@ public class EnemyCreatState : EnemyBaseState
             enemy.swichEnemyState(enemy.enemyAttackState);
     }
 
-    public override void setupWhenCollsion(EnemyStateManger enemy , Collision2D collision , PlayerScore score, PlayerStateController playerColor)
+    public override void setupWhenCollsion(EnemyStateManger enemy , Collision2D collision , PlayerScore score, PlayerStateController playerColor, AudioPlayer audioPlayer)
     {
         
         
