@@ -1,3 +1,4 @@
+using SpriteGlow;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,25 +11,55 @@ public class PlayerHealth : MonoBehaviour
 
     AudioPlayer audioPlayer;
 
+    [SerializeField] SpriteGlowEffect playerSprite;
+    bool canDamegePlayer = true;
     private void Start()
     {
         audioPlayer = GameObject.FindGameObjectWithTag("Audio Player").GetComponent<AudioPlayer>();
     }
-
+    private void Update()
+    {
+        Debug.Log(canDamegePlayer);
+    }
     public void decreaseHealth()
     {
-        health--;
-        if (onHealthChange != null) onHealthChange();
-        if (health < 1)
+        if (canDamegePlayer)
         {
-            audioPlayer.playDestoryPlayerEffect();
-            Destroy(gameObject);
+            health--;
+            if (onHealthChange != null) onHealthChange();
+            if (health < 1)
+            {
+                audioPlayer.playDestoryPlayerEffect();
+                Destroy(gameObject);
+            }
+            audioPlayer.playPlayerHeartEffect();
+            StartCoroutine(coolDown());
         }
-        audioPlayer.playPlayerHeartEffect();
     }
 
     public int getPlayerHealth()
     {
         return health;
+    }
+
+    IEnumerator coolDown()
+    {
+        canDamegePlayer = false;
+        StartCoroutine(coolDownEffect());
+        yield return new WaitForSeconds(1.5f);
+        StopAllCoroutines();
+        playerSprite.AlphaThreshold = 1;
+        canDamegePlayer= true;
+    }
+
+    IEnumerator coolDownEffect()
+    {
+        while (true) 
+        {
+            playerSprite.AlphaThreshold = 0;
+            yield return new WaitForSeconds(0.1f);
+            playerSprite.AlphaThreshold = 1;
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }

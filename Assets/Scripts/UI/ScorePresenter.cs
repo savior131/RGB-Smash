@@ -15,6 +15,7 @@ public class ScorePresenter : MonoBehaviour
     {
         playerScore.onScoreChange += setScoreTextUI;
         playerScore.onCompoIncreace += setCompoTextUI;
+        setCompoTextUI();
     }
 
     private void setScoreTextUI()
@@ -25,15 +26,15 @@ public class ScorePresenter : MonoBehaviour
     {
         compoText.text = space + playerScore.getCompo();
         if (playerScore.getScore() >= 9999)
-            space = "         X";
+            space = "             X";
         else if (playerScore.getScore() >= 999)
-            space = "      X";
+            space = "          X";
         else if(playerScore.getScore() >= 99)
-            space = "    X";
+            space = "      X";
         else if(playerScore.getScore() >= 9)
-            space = "  X";
+            space = "    X";
         else if (playerScore.getScore() >= 0)
-            space = " X";
+            space = "   X";
     }
     IEnumerator scoreUptadeUI()
     {
