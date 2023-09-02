@@ -6,41 +6,38 @@ using UnityEngine.Pool;
 
 public class EnemyStateManger : MonoBehaviour
 {
+    #region Enemy states
     EnemyBaseState currentState;
     public EnemyCreatState enemyCreatState = new EnemyCreatState();
     public EnemyAttackState enemyAttackState = new EnemyAttackState();
     public EnemyDestroyState enemyDestroyState = new EnemyDestroyState();
+    #endregion
+    #region refrance script
     SpriteGlowEffect enemyColor;
     ParticalEffectManger particalEffectManger;
-    IObjectPool<EnemyStateManger> enemyPool;
-    float randomX, randomY;
     PlayerScore score;
     PlayerStateController playerColor;
     AudioPlayer audioplayer;
+    #endregion
+
+    IObjectPool<EnemyStateManger> enemyPool;
     private void OnEnable()
     {
         currentState = enemyCreatState;
+        setRefrence();
         enemyCreatState.setupStart(this, enemyColor, particalEffectManger, enemyPool);
-        setRandomPosition();
-        if(GameObject.FindGameObjectWithTag("Player"))
+    }
+
+    private void setRefrence()
+    {
+        if (GameObject.FindGameObjectWithTag("Player"))
         {
             score = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScore>();
             playerColor = GameObject.FindGameObjectWithTag("Trail").GetComponent<PlayerStateController>();
             audioplayer = GameObject.FindGameObjectWithTag("Audio Player").GetComponent<AudioPlayer>();
         }
-    }
-
-    private void setRandomPosition()
-    {
-        float cameraHeight = Camera.main.orthographicSize * 2f;
-        float cameraWidth = cameraHeight * Camera.main.aspect;
-
-        Vector2 cameraPosition = Camera.main.transform.position;
-
-        // Calculate random spawn point within the camera boundaries
-        randomX = Random.Range(cameraPosition.x - cameraWidth / 2f, cameraPosition.x + cameraWidth / 2f);
-        randomY = Random.Range(cameraPosition.y - cameraHeight / 2f, cameraPosition.y + cameraHeight / 2f);
-        transform.position = new Vector3(randomX, randomY, 0);
+        enemyColor = GetComponent<SpriteGlowEffect>();
+        particalEffectManger = GameObject.FindGameObjectWithTag("Partical Manger").GetComponent<ParticalEffectManger>();
     }
 
     private void Update()

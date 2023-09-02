@@ -8,21 +8,30 @@ using UnityEngine.Events;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] int health;
-    [SerializeField] ParticleSystem explotion;
     [SerializeField] SpriteGlowEffect playerSprite;
-    public event Action onHealthChange;
-    bool canDamegePlayer = true;
     [SerializeField] UnityEvent onPlayerDeath;
+    ParticalEffectManger plarticalEffect;
+    bool canDamegePlayer = true;
+    public event Action onHealthChange;
+    AudioPlayer audioPlayer;
+    
+
+    private void Start()
+    {
+        plarticalEffect = GameObject.FindGameObjectWithTag("Partical Manger").GetComponent<ParticalEffectManger>();
+        audioPlayer = GameObject.FindGameObjectWithTag("Audio Player").GetComponent<AudioPlayer>();
+    }
     public void decreaseHealth()
     {
         if (canDamegePlayer)
         {
             health--;
+            audioPlayer.playPlayerHeartEffect();
             if (onHealthChange != null) onHealthChange();
             if (health < 1)
             {
-                explotion.transform.position = transform.position;
-                explotion.Play();
+                audioPlayer.playDestoryPlayerEffect();
+                plarticalEffect.destoryPlayerPartical(transform);
                 Destroy(gameObject);
                 Invoke("playerDeath", 1f);
             }
