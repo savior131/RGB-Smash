@@ -9,6 +9,7 @@ public class ActionsControl : IInputPlayer
     {
         return playerDir;
     }
+
     void OnMove(InputValue value)
     {
         playerDir = value.Get<Vector2>();

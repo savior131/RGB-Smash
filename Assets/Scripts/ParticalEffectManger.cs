@@ -44,4 +44,9 @@ public class ParticalEffectManger : MonoBehaviour
         }
 
     }
+    [System.Obsolete]
+    public void destoryPlayerPartical(Transform enmey)
+    {
+        Instantiate(Particals[3], enmey.transform.position, Quaternion.identity);
+    }
 }

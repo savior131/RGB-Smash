@@ -6,8 +6,8 @@ public class InputSystemManger : MonoBehaviour
 {
     enum controls
     {
-        mobile,
         pcAndGamepad,
+        mobile
     }
     [SerializeField] controls control;
     IInputPlayer inputPlayer;

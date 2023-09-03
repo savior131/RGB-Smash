@@ -20,13 +20,25 @@ public class EnemyCreatState : EnemyBaseState
     public override void setupStart(EnemyStateManger enemy,SpriteGlowEffect enemyColor,
                                    ParticalEffectManger particalEffectManger , IObjectPool<EnemyStateManger> enemyPool)
     {
-        setReferance(enemy, out enemyColor, out particalEffectManger);
+        setRandomPosition(enemy);
         setColorEnemy(enemy, enemyColor, particalEffectManger);
         enemy.transform.localScale = growScale;
         enemy.GetComponent<CircleCollider2D>().enabled = false;
     }
+    private void setRandomPosition(EnemyStateManger enemy)
+    {
+        float randomX, randomY;
+        float cameraHeight = Camera.main.orthographicSize * 2f;
+        float cameraWidth = cameraHeight * Camera.main.aspect;
 
-   
+        Vector2 cameraPosition = Camera.main.transform.position;
+
+        // Calculate random spawn point within the camera boundaries
+        randomX = Random.Range(cameraPosition.x - cameraWidth / 2f, cameraPosition.x + cameraWidth / 2f);
+        randomY = Random.Range(cameraPosition.y - cameraHeight / 2f, cameraPosition.y + cameraHeight / 2f);
+        enemy.transform.position = new Vector3(randomX, randomY, 0);
+    }
+
     private void setColorEnemy(EnemyStateManger enemy, SpriteGlowEffect enemyColor, ParticalEffectManger particalEffectManger)
     {
         colorIndex = Random.Range(0, colors.Length);
@@ -36,12 +48,6 @@ public class EnemyCreatState : EnemyBaseState
 #pragma warning restore CS0612 // Type or member is obsolete
     }
 
-    private static void setReferance(EnemyStateManger enemy, out SpriteGlowEffect enemyColor, out ParticalEffectManger particalEffectManger)
-    {
-        enemyColor = enemy.GetComponent<SpriteGlowEffect>();
-        particalEffectManger = GameObject.FindGameObjectWithTag("Partical Manger").GetComponent<ParticalEffectManger>();
-        
-    }
 
     public override void setupUpdate(EnemyStateManger enemy)
     {
