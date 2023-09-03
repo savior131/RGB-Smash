@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6921143831402825051}
   - component: {fileID: 3002103283811848613}
   - component: {fileID: -8885344725668082094}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: destroy enemy partical
   m_TagString: Untagged
   m_Icon: {fileID: 0}

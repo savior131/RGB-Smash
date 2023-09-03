@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6304964921979518659}
   - component: {fileID: 5721580166487789895}
   - component: {fileID: 4272102886214758897}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Destroy Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

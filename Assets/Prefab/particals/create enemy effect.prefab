@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3695605033378795300}
   - component: {fileID: 7972063073867695463}
   - component: {fileID: 4481263852816491460}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: create enemy effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
