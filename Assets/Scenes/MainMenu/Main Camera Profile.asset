@@ -15,41 +15,16 @@ MonoBehaviour:
   active: 1
   type:
     m_OverrideState: 1
-    m_Value: 8
+    m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.45
+    m_Value: 0.3
   response:
     m_OverrideState: 0
     m_Value: 0.8
   texture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
---- !u!114 &-2418644733523207625
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccf1aba9553839d41ae37dd52e9ebcce, type: 3}
-  m_Name: MotionBlur
-  m_EditorClassIdentifier: 
-  active: 1
-  mode:
-    m_OverrideState: 0
-    m_Value: 0
-  quality:
-    m_OverrideState: 1
-    m_Value: 2
-  intensity:
-    m_OverrideState: 1
-    m_Value: 0.144
-  clamp:
-    m_OverrideState: 0
-    m_Value: 0.05
 --- !u!114 &-111633919584768405
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -107,7 +82,6 @@ MonoBehaviour:
   m_Name: Main Camera Profile
   m_EditorClassIdentifier: 
   components:
-  - {fileID: -2418644733523207625}
   - {fileID: 570667254164769429}
   - {fileID: 6387161081628907087}
   - {fileID: -2666948375186729137}

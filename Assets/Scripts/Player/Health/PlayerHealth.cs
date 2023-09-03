@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] int health;
     [SerializeField] SpriteGlowEffect playerSprite;
     [SerializeField] UnityEvent onPlayerDeath;
+    [SerializeField] Transform player;
     ParticalEffectManger plarticalEffect;
     bool canDamegePlayer = true;
     public event Action onHealthChange;
@@ -31,16 +32,19 @@ public class PlayerHealth : MonoBehaviour
             if (health < 1)
             {
                 audioPlayer.playDestoryPlayerEffect();
-                plarticalEffect.destoryPlayerPartical(transform);
-                Destroy(gameObject);
-                Invoke("playerDeath", 1f);
+                plarticalEffect.destoryPlayerPartical(player);
+                StartCoroutine(playerDeath());
+                Destroy(player.gameObject);
+                
             }
             StartCoroutine(coolDown());
         }
     }
 
-    void playerDeath()
+    IEnumerator playerDeath()
     {
+        Debug.Log("gameover");
+        yield return new WaitForSeconds(1f);
         onPlayerDeath.Invoke();
     }
 

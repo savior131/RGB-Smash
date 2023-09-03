@@ -15,11 +15,18 @@ public class EnemyCreatState : EnemyBaseState
     float growSpeed = 7f;
     #endregion
     int colorIndex = 0;
+    float randomX, randomY;
+    float cameraHeight;
+    float cameraWidth; 
+    Vector2 rangeX,rangeY;
 
-    
     public override void setupStart(EnemyStateManger enemy,SpriteGlowEffect enemyColor,
                                    ParticalEffectManger particalEffectManger , IObjectPool<EnemyStateManger> enemyPool)
     {
+        cameraHeight = Camera.main.orthographicSize * 2f;
+        cameraWidth = cameraHeight * Camera.main.aspect;
+        rangeX = new((-cameraWidth / 2f) + 5, (cameraWidth / 2f) - 5);
+        rangeY = new((-cameraHeight / 2f) + 5, (cameraHeight / 2f) - 5);
         setRandomPosition(enemy);
         setColorEnemy(enemy, enemyColor, particalEffectManger);
         enemy.transform.localScale = growScale;
@@ -27,15 +34,12 @@ public class EnemyCreatState : EnemyBaseState
     }
     private void setRandomPosition(EnemyStateManger enemy)
     {
-        float randomX, randomY;
-        float cameraHeight = Camera.main.orthographicSize * 2f;
-        float cameraWidth = cameraHeight * Camera.main.aspect;
 
         Vector2 cameraPosition = Camera.main.transform.position;
 
         // Calculate random spawn point within the camera boundaries
-        randomX = Random.Range(cameraPosition.x - cameraWidth / 2f, cameraPosition.x + cameraWidth / 2f);
-        randomY = Random.Range(cameraPosition.y - cameraHeight / 2f, cameraPosition.y + cameraHeight / 2f);
+        randomX = Random.Range(rangeX.x,rangeX.y);
+        randomY = Random.Range(rangeY.x,rangeY.y);
         enemy.transform.position = new Vector3(randomX, randomY, 0);
     }
 

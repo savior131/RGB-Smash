@@ -10,8 +10,6 @@ public class CameraShake : MonoBehaviour
 
     [SerializeField] string[] layersToRemovePause;
     [SerializeField] string[] layersToAddContinue;
-    [SerializeField]
-    Volume[] volumes;
 
     private void Awake()
     {
@@ -21,8 +19,6 @@ public class CameraShake : MonoBehaviour
     {
         if (True)
         {
-            volumes[0].enabled = false;
-            volumes[1].enabled = true;
             foreach (string layerName in layersToRemovePause)
             {
                 int layerMaskToRemove = 1 << LayerMask.NameToLayer(layerName);
@@ -32,8 +28,6 @@ public class CameraShake : MonoBehaviour
         }
         else
         {
-            volumes[1].enabled = false;
-            volumes[0].enabled = true;
             foreach (string layerName in layersToAddContinue)
             {
                 int layerMaskToAdd = 1 << LayerMask.NameToLayer(layerName);
