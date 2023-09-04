@@ -10,10 +10,6 @@ public class SpriteScaler : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         initialScale = transform.localScale;
-    }
-
-    private void Update()
-    {
         float cameraWidth = Camera.main.orthographicSize * 2f * Camera.main.aspect;
         if (sliced)
         {
@@ -25,4 +21,5 @@ public class SpriteScaler : MonoBehaviour
             transform.localScale = new Vector3(scaleX, transform.localScale.y, transform.localScale.z);
         }
     }
+
 }
