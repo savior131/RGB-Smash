@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.ParticleSystemJobs;
 public class ColorCollector : MonoBehaviour
 {
-    PlayerStateController playerStateController;
+    [SerializeField] PlayerStateController playerStateController;
     float maxCapacitis = 5f;
     float[] RGBCapacitis = { 3f, 2.5f, 2.5f };
     float amountCollected = 0.01f;
@@ -33,7 +33,6 @@ public class ColorCollector : MonoBehaviour
     }
     private void Start()
     {
-        playerStateController = GameObject.FindGameObjectWithTag("Trail").GetComponent<PlayerStateController>();
         StartCoroutine(DrainCoolDown());
     }
     private void Update()

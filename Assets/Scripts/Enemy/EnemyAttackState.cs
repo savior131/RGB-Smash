@@ -32,10 +32,6 @@ public class EnemyAttackState : EnemyBaseState
     {
         enemyColor = enemy.GetComponent<SpriteGlowEffect>();        
     }
-    public override void setupUpdate(EnemyStateManger enemy)
-    {
-
-    }
 
     public override void setupWhenCollsion(EnemyStateManger enemy, Collision2D collision , PlayerScore score, PlayerStateController playerColor, AudioPlayer audioPlayer)
     {

@@ -5,16 +5,10 @@ using UnityEngine;
 
 public class Glowybackground : MonoBehaviour
 {
-    Animator animator;
-    PlayerStateController trail;
-    SpriteGlowEffect backgroundSprite;
+    [SerializeField] Animator animator;
+    [SerializeField] PlayerStateController trail;
+    [SerializeField] SpriteGlowEffect backgroundSprite;
 
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
-        trail = GameObject.FindGameObjectWithTag("Trail").GetComponent<PlayerStateController>();
-        backgroundSprite = GetComponent<SpriteGlowEffect>();
-    }
     public void spread()
     {
         animator.SetTrigger("Change");

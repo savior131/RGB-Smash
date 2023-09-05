@@ -1097,6 +1097,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294fb5cbe18c20247bf8caafef17e7fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 330718308}
+  trail: {fileID: 527459651}
 --- !u!114 &330718311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1213,6 +1215,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &449706923 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 933232316231946537, guid: a84259aa1d34cec4e9b497e22608b778, type: 3}
+  m_PrefabInstance: {fileID: 1842255934}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1545,6 +1552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7a4ed8229e8b5468a7f47a95f369ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TrailColor: {fileID: 527459651}
   backgoundChange:
     m_PersistentCalls:
       m_Calls:
@@ -1599,6 +1607,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  playerInput: {fileID: 793124096}
 --- !u!1 &619696146
 GameObject:
   m_ObjectHideFlags: 0
@@ -1898,6 +1907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 760cc51b97bb65f44baab6830c4f95ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fog: {fileID: 674225580}
+  trail: {fileID: 527459651}
 --- !u!114 &674225583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4618,6 +4629,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4455ed0f6689bf4dbbd3b5d52853974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1422091915}
+  trail: {fileID: 527459652}
+  backgroundSprite: {fileID: 1422091911}
 --- !u!1 &1427995645
 GameObject:
   m_ObjectHideFlags: 0
@@ -7120,6 +7134,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 3272801349174785878, guid: a84259aa1d34cec4e9b497e22608b778, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 449706923}
     - target: {fileID: 5477618497004315872, guid: a84259aa1d34cec4e9b497e22608b778, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -7784,11 +7802,14 @@ MonoBehaviour:
   speed: 10
   decelaration: 10
   accelration: 35
+  playerRB: {fileID: 2110805536}
   playerDir: {x: 0, y: 0, z: 0}
   dashSpeed: 40
   dashTime: 0.2
   coolTimeDash: 0.2
   isDash: 0
+  playerInput: {fileID: 793124096}
+  audioPlayer: {fileID: 1788479495}
 --- !u!50 &2110805536
 Rigidbody2D:
   serializedVersion: 4
@@ -7828,6 +7849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f8dd09db2f7e904f8c6edce71e0eb8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 2110805536}
 --- !u!58 &2110805540
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7875,6 +7897,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb2656e80edf994a92813efac36d224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {fileID: 2110805535}
+  playerRB: {fileID: 2110805536}
+  animator: {fileID: 1981510160}
 --- !u!114 &2110805543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7887,6 +7912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23089dc482cbbb54f9ee62735c589fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStateController: {fileID: 527459652}
   colorChange:
     m_PersistentCalls:
       m_Calls:
@@ -7929,6 +7955,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   playerSprite: {fileID: 1981510159}
+  plarticalEffect: {fileID: 1829599470}
+  audioPlayer: {fileID: 1788479495}
 --- !u!1 &2137744795
 GameObject:
   m_ObjectHideFlags: 0

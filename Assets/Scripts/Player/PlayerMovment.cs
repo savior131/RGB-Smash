@@ -11,7 +11,7 @@ public class PlayerMovment : MonoBehaviour
     float initSpeed;
     #endregion
     #region refrance data
-    Rigidbody2D playerRB;
+    [SerializeField] Rigidbody2D playerRB;
     public Vector3 playerDir;
     bool playerDash;
     #endregion
@@ -23,15 +23,12 @@ public class PlayerMovment : MonoBehaviour
     bool canDash;
     #endregion
     #region controls data
-    InputSystemManger playerInput;
+    [SerializeField] InputSystemManger playerInput;
     #endregion
-    AudioPlayer audioPlayer;
+    [SerializeField] AudioPlayer audioPlayer;
 
     private void Start()
     {
-        playerInput = GameObject.FindGameObjectWithTag("Input System").GetComponent<InputSystemManger>();
-        audioPlayer = GameObject.FindGameObjectWithTag("Audio Player").GetComponent<AudioPlayer>();
-        playerRB = GetComponent<Rigidbody2D>();
         initSpeed = speed;
         canDash = true;
     }

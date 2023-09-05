@@ -12,8 +12,11 @@ public class PlayerMovmentEditor : Editor
     SerializedProperty dashSpeed;
     SerializedProperty dashTime;
     SerializedProperty coolTimeDash;
+    SerializedProperty audioPlayer;
+    SerializedProperty playerInput;
+    SerializedProperty playerRB;
 
-    bool playerSpeedGroub = false , playerdash = false;
+    bool playerSpeedGroub = false , playerdash = false , playerRef;
     #endregion
 
     private void OnEnable()
@@ -24,6 +27,9 @@ public class PlayerMovmentEditor : Editor
         dashSpeed = serializedObject.FindProperty("dashSpeed");
         dashTime = serializedObject.FindProperty("dashTime");
         coolTimeDash = serializedObject.FindProperty("coolTimeDash");
+        audioPlayer = serializedObject.FindProperty("audioPlayer");
+        playerRB = serializedObject.FindProperty("playerRB");
+        playerInput = serializedObject.FindProperty("playerInput");
         
     }
 
@@ -45,6 +51,14 @@ public class PlayerMovmentEditor : Editor
             EditorGUILayout.PropertyField(dashSpeed);
             EditorGUILayout.PropertyField(dashTime);
             EditorGUILayout.PropertyField(coolTimeDash);
+        }
+        EditorGUILayout.EndFoldoutHeaderGroup();
+        playerRef = EditorGUILayout.BeginFoldoutHeaderGroup(playerRef, "player refrance");
+        if (playerRef)
+        {
+            EditorGUILayout.PropertyField(audioPlayer);
+            EditorGUILayout.PropertyField(playerInput);
+            EditorGUILayout.PropertyField(playerRB);
         }
         EditorGUILayout.EndFoldoutHeaderGroup();
         serializedObject.ApplyModifiedProperties();

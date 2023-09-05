@@ -5,12 +5,10 @@ using UnityEngine;
 
 public class Fog : MonoBehaviour
 {
-    Renderer fog;
-    TrailRenderer trail;
+    [SerializeField] Renderer fog;
+    [SerializeField] TrailRenderer trail;
     private void Start()
     {
-        fog = GetComponent<Renderer>();
-        trail = GameObject.FindGameObjectWithTag("Trail").GetComponent<TrailRenderer>();
         fog.sharedMaterial.SetColor("_FogColor", new(1, 0, 0));
     }
 

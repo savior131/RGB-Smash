@@ -23,10 +23,6 @@ public class EnemyDestroyState : EnemyBaseState
         enemyColor = enemy.GetComponent<SpriteGlowEffect>();
     }
 
-    public override void setupUpdate(EnemyStateManger enemy)
-    {
-        
-    }
     public override void setupFixedUpdate(EnemyStateManger enemy)
     {
 

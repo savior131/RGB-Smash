@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    PlayerMovment movement;
-    Rigidbody2D playerRB;
-    Animator animator;
-    void Start()
-    {
-        movement = GetComponent<PlayerMovment>();
-        playerRB = GetComponent<Rigidbody2D>();
-        animator = GetComponentInChildren<Animator>();
-    }
+    [SerializeField] PlayerMovment movement;
+    [SerializeField] Rigidbody2D playerRB;
+    [SerializeField] Animator animator;
     void Update()
     {
         animator.SetFloat("Velocity",playerRB.velocity.magnitude);

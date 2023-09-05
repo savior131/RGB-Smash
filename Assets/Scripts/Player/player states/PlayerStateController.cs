@@ -9,18 +9,16 @@ public class PlayerStateController : MonoBehaviour
     [HideInInspector] public IPlayerStates currentPlayerTrailColor;
     IPlayerStates[] playerColorTrailStates = {new PlayerRedColorState() 
             , new PlayerGreenColorState() , new PlayerBlueColorState()};
-    TrailRenderer TrailColor;
+    [SerializeField] TrailRenderer TrailColor;
     [SerializeField] UnityEvent backgoundChange;
     [SerializeField] UnityEvent colorUpdate;
     bool playerChangeColor;
     bool canChangeColor = true;
     int colorIndex = 0;
     bool canAutoSwitch = false;
-    InputSystemManger playerInput;
+    [SerializeField] InputSystemManger playerInput;
     private void Start()
     {
-        playerInput = GameObject.FindGameObjectWithTag("Input System").GetComponent<InputSystemManger>();
-        TrailColor = GameObject.FindGameObjectWithTag("Trail").GetComponent<TrailRenderer>();
         setTrailColor(playerColorTrailStates[colorIndex]);
     }
     private void Update()

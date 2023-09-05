@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class WhiteBackground : MonoBehaviour
 {
-    SpriteRenderer sprite;
-    TrailRenderer trail;
-    private void Start()
-    {
-        sprite = GetComponent<SpriteRenderer>();
-        trail = GameObject.FindGameObjectWithTag("Trail").GetComponent<TrailRenderer>();
-    }
-
+    [SerializeField] SpriteRenderer sprite;
+    [SerializeField] TrailRenderer trail;
     public void changeColor()
     {
         StartCoroutine(startChangeColor());

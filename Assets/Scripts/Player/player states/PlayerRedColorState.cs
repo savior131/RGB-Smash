@@ -7,10 +7,10 @@ using UnityEngine;
 
 public class PlayerRedColorState : IPlayerStates
 {
-
+    Color color;
     public void colorChange(TrailRenderer newColor)
     {
-        Color color = Color.Lerp(newColor.startColor, Color.red, Time.deltaTime * 2);
+        color = Color.Lerp(newColor.startColor, Color.red, Time.deltaTime * 2);
         newColor.startColor = color;
     }
 }

@@ -9,17 +9,11 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] int health;
     [SerializeField] SpriteGlowEffect playerSprite;
-    ParticalEffectManger plarticalEffect;
+    [SerializeField] ParticalEffectManger plarticalEffect;
     bool canDamegePlayer = true;
     public event Action onHealthChange;
-    AudioPlayer audioPlayer;
+    [SerializeField] AudioPlayer audioPlayer;
     
-
-    private void Start()
-    {
-        plarticalEffect = GameObject.FindGameObjectWithTag("Partical Manger").GetComponent<ParticalEffectManger>();
-        audioPlayer = GameObject.FindGameObjectWithTag("Audio Player").GetComponent<AudioPlayer>();
-    }
     public void decreaseHealth()
     {
         if (canDamegePlayer)

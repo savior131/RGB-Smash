@@ -6,9 +6,14 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
+    CameraShake cam;
+    private void Start()
+    {
+        cam = Camera.main.GetComponent<CameraShake>();
+    }
     public void shake()
     {
-        Camera.main.GetComponent<CameraShake>().Shake(0.3f, 1.8f, 20);
+        cam.Shake(0.3f, 1.8f, 20);
     }
     public void onPausePress()
     {

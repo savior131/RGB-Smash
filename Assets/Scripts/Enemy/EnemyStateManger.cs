@@ -44,11 +44,6 @@ public class EnemyStateManger : MonoBehaviour
         enemyColor = GetComponent<SpriteGlowEffect>();
     }
 
-    private void Update()
-    {
-        currentState.setupUpdate(this);
-    }
-
     private void FixedUpdate()
     {
         currentState.setupFixedUpdate(this);

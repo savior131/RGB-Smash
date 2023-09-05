@@ -34,7 +34,6 @@ public class EnemyCreatState : EnemyBaseState
     }
     private void setRandomPosition(EnemyStateManger enemy)
     {
-
         Vector2 cameraPosition = Camera.main.transform.position;
 
         // Calculate random spawn point within the camera boundaries
@@ -42,7 +41,6 @@ public class EnemyCreatState : EnemyBaseState
         randomY = Random.Range(rangeY.x,rangeY.y);
         enemy.transform.position = new Vector3(randomX, randomY, 0);
     }
-
     private void setColorEnemy(EnemyStateManger enemy, SpriteGlowEffect enemyColor, ParticalEffectManger particalEffectManger)
     {
         colorIndex = Random.Range(0, colors.Length);
@@ -51,16 +49,6 @@ public class EnemyCreatState : EnemyBaseState
         particalEffectManger.releaseCreateEnemyPartical(enemy.transform, colors[colorIndex]);
 #pragma warning restore CS0612 // Type or member is obsolete
     }
-
-
-    public override void setupUpdate(EnemyStateManger enemy)
-    {
-        if (enemy.transform.localScale.x <= 1.4f)
-            enemy.transform.localScale += growScale * Time.deltaTime * growSpeed;
-        else
-            enemy.swichEnemyState(enemy.enemyAttackState);
-    }
-
     public override void setupWhenCollsion(EnemyStateManger enemy , Collision2D collision , PlayerScore score, PlayerStateController playerColor, AudioPlayer audioPlayer)
     {
         
@@ -69,7 +57,10 @@ public class EnemyCreatState : EnemyBaseState
 
     public override void setupFixedUpdate(EnemyStateManger enemy)
     {
-
+        if (enemy.transform.localScale.x <= 1.4f)
+            enemy.transform.localScale += growScale * Time.deltaTime * growSpeed;
+        else
+            enemy.swichEnemyState(enemy.enemyAttackState);
     }
 
 }
