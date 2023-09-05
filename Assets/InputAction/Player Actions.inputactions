@@ -180,7 +180,7 @@
                 {
                     "name": "",
                     "id": "757f3b23-33e1-41f4-9bb5-0dc996fbc246",
-                    "path": "<Touchscreen>/Press",
+                    "path": "<Touchscreen>/touch1/press",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
