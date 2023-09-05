@@ -21,10 +21,14 @@ public class EnemyStateManger : MonoBehaviour
     #endregion
 
     IObjectPool<EnemyStateManger> enemyPool;
+
+    private void Awake()
+    {
+        setRefrence();
+    }
     private void OnEnable()
     {
         currentState = enemyCreatState;
-        setRefrence();
         enemyCreatState.setupStart(this, enemyColor, particalEffectManger, enemyPool);
     }
 
@@ -36,8 +40,8 @@ public class EnemyStateManger : MonoBehaviour
             playerColor = GameObject.FindGameObjectWithTag("Trail").GetComponent<PlayerStateController>();
             audioplayer = GameObject.FindGameObjectWithTag("Audio Player").GetComponent<AudioPlayer>();
         }
-        enemyColor = GetComponent<SpriteGlowEffect>();
         particalEffectManger = GameObject.FindGameObjectWithTag("Partical Manger").GetComponent<ParticalEffectManger>();
+        enemyColor = GetComponent<SpriteGlowEffect>();
     }
 
     private void Update()

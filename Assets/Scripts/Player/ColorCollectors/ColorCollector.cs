@@ -19,14 +19,17 @@ public class ColorCollector : MonoBehaviour
     public void redCollect()
     {
         RGBCapacitis[0] += amountCollected;
+        RGBCapacitis[0] = Mathf.Clamp(RGBCapacitis[0], 0, 5);
     }
     public void greenCollect()
     {
         RGBCapacitis[1] += amountCollected;
+        RGBCapacitis[1] = Mathf.Clamp(RGBCapacitis[1], 0, 5);
     }
     public void blueCollect()
     {
         RGBCapacitis[2] += amountCollected;
+        RGBCapacitis[2] = Mathf.Clamp(RGBCapacitis[2], 0, 5);
     }
     private void Start()
     {
@@ -35,12 +38,10 @@ public class ColorCollector : MonoBehaviour
     }
     private void Update()
     {
-        
-        colorBoundaries();
         onBlueCollect();
         onGreenCollect();
         onRedCollect();
-        //Debug.Log("red" + RGBCapacitis[0] / maxCapacitis + " green " + RGBCapacitis[1] / maxCapacitis + "blue" + RGBCapacitis[2] / maxCapacitis);
+        Debug.Log("red" + RGBCapacitis[0] / maxCapacitis + " green " + RGBCapacitis[1] / maxCapacitis + "blue" + RGBCapacitis[2] / maxCapacitis);
     }
     IEnumerator DrainCoolDown()
     {
@@ -49,6 +50,7 @@ public class ColorCollector : MonoBehaviour
             if (playerStateController.getPlayerColor() == Color.red)
             {
                 RGBCapacitis[0] -= ammountDrained;
+                RGBCapacitis[0] = Mathf.Clamp(RGBCapacitis[0], 0, 5);
                 if (RGBCapacitis[0] <= 0)
                 {
                     colorChange.Invoke();
@@ -57,6 +59,7 @@ public class ColorCollector : MonoBehaviour
             else if (playerStateController.getPlayerColor() == Color.green)
             {
                 RGBCapacitis[1] -= ammountDrained;
+                RGBCapacitis[1] = Mathf.Clamp(RGBCapacitis[1], 0, 5);
                 if (RGBCapacitis[1] <= 0)
                 {
                     colorChange.Invoke();
@@ -65,19 +68,13 @@ public class ColorCollector : MonoBehaviour
             else if (playerStateController.getPlayerColor() == Color.blue)
             {
                 RGBCapacitis[2] -= ammountDrained;
+                RGBCapacitis[2] = Mathf.Clamp(RGBCapacitis[2], 0, 5);
                 if (RGBCapacitis[2] <= 0)
                 {
                     colorChange.Invoke();
                 }
             }
             yield return new WaitForSeconds(0.05f);
-        }
-    }
-    void colorBoundaries()
-    {
-        for (int i = 0; i < RGBCapacitis.Length; i++)
-        {
-            RGBCapacitis[i] = Mathf.Clamp(RGBCapacitis[i],0,5);
         }
     }
 

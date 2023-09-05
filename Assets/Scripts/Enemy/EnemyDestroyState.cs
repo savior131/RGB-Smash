@@ -11,17 +11,16 @@ public class EnemyDestroyState : EnemyBaseState
     public override void setupStart(EnemyStateManger enemy, SpriteGlowEffect enemyColor,
         ParticalEffectManger particalEffectManger , IObjectPool<EnemyStateManger> enemyPool)
     {
-        setReferance(enemy, out enemyColor, out particalEffectManger);
+        setReferance(enemy, out enemyColor);
         GameObject.Destroy(enemy.transform.GetChild(0).gameObject);
 #pragma warning disable CS0612 // Type or member is obsolete
         particalEffectManger.enemyDestroyPartical(enemy.transform, enemyColor.GlowColor);
 #pragma warning restore CS0612 // Type or member is obsolete
         enemyPool.Release(enemy);
     }
-    private static void setReferance(EnemyStateManger enemy, out SpriteGlowEffect enemyColor, out ParticalEffectManger particalEffectManger)
+    private static void setReferance(EnemyStateManger enemy, out SpriteGlowEffect enemyColor)
     {
         enemyColor = enemy.GetComponent<SpriteGlowEffect>();
-        particalEffectManger = GameObject.FindGameObjectWithTag("Partical Manger").GetComponent<ParticalEffectManger>();
     }
 
     public override void setupUpdate(EnemyStateManger enemy)

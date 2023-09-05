@@ -7,11 +7,11 @@ public class Fog : MonoBehaviour
 {
     Renderer fog;
     TrailRenderer trail;
-    void Start()
+    private void Start()
     {
         fog = GetComponent<Renderer>();
         trail = GameObject.FindGameObjectWithTag("Trail").GetComponent<TrailRenderer>();
-        fog.sharedMaterial.SetColor("_FogColor", new(1,0,0));
+        fog.sharedMaterial.SetColor("_FogColor", new(1, 0, 0));
     }
 
     public void changeColor()

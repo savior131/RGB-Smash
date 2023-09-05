@@ -6,7 +6,7 @@ public class WhiteBackground : MonoBehaviour
 {
     SpriteRenderer sprite;
     TrailRenderer trail;
-    void Start()
+    private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
         trail = GameObject.FindGameObjectWithTag("Trail").GetComponent<TrailRenderer>();

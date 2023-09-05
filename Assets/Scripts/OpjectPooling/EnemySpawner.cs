@@ -13,7 +13,6 @@ public class EnemySpawner : MonoBehaviour
     bool StillSpawning = true;
     private void Awake()
     {
-        
         enemyPool = new ObjectPool<EnemyStateManger>(createEnemy , OnGet , OnReleas);
     }
     private EnemyStateManger createEnemy()
@@ -38,26 +37,24 @@ public class EnemySpawner : MonoBehaviour
     }
     private void Update()
     {
-
-        GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag("Enemy");
-        bool allDisabled = true;
-        foreach (GameObject obj in taggedObjects)
-        {
-            if (obj.activeSelf)
-            {
-                allDisabled = false;
-                break; 
-            }
-        }
-        if (allDisabled&&!StillSpawning)
-        {
-            allDisabled = false;
-            enemyCount += 1;
-            spawnTimer = (spawnTimer > 5) ? spawnTimer - 0.1f : 5;
-            StopAllCoroutines();
-            StartCoroutine(spawner());
-        }
-            
+        //GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag("Enemy");
+        //bool allDisabled = true;
+        //foreach (GameObject obj in taggedObjects)
+        //{
+        //    if (obj.activeSelf)
+        //    {
+        //        allDisabled = false;
+        //        break;
+        //    }
+        //}
+        //if (allDisabled && !StillSpawning)
+        //{
+        //    allDisabled = false;
+        //    enemyCount += 1;
+        //    spawnTimer = (spawnTimer > 5) ? spawnTimer - 0.1f : 5;
+        //    StopAllCoroutines();
+        //    StartCoroutine(spawner());
+        //}
     }
     IEnumerator spawner()
     {

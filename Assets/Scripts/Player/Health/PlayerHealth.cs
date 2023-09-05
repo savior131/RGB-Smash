@@ -32,7 +32,9 @@ public class PlayerHealth : MonoBehaviour
             if (health < 1)
             {
                 audioPlayer.playDestoryPlayerEffect();
+#pragma warning disable CS0612 // Type or member is obsolete
                 plarticalEffect.destoryPlayerPartical(player);
+#pragma warning restore CS0612 // Type or member is obsolete
                 StartCoroutine(playerDeath());
                 Destroy(player.gameObject);
                 
@@ -43,7 +45,6 @@ public class PlayerHealth : MonoBehaviour
 
     IEnumerator playerDeath()
     {
-        Debug.Log("gameover");
         yield return new WaitForSeconds(1f);
         onPlayerDeath.Invoke();
     }

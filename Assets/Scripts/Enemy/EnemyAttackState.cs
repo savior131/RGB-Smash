@@ -14,7 +14,7 @@ public class EnemyAttackState : EnemyBaseState
     {
         enemy.GetComponent<CircleCollider2D>().enabled = true;
         enemyRb = enemy.GetComponent<Rigidbody2D>();
-        setReferance(enemy, out enemyColor, out particalEffectManger);
+        setReferance(enemy, out enemyColor);
         addForseForCircle();
 #pragma warning disable CS0612 // Type or member is obsolete
         particalEffectManger.enemyTrailPartical(enemy.transform,enemyColor.GlowColor);
@@ -28,11 +28,9 @@ public class EnemyAttackState : EnemyBaseState
         float forceY = Random.Range(-100, 100);
         enemyRb.AddForce(new Vector2(forceX / 100, forceY / 100).normalized * force, ForceMode2D.Impulse);
     }
-    private static void setReferance(EnemyStateManger enemy, out SpriteGlowEffect enemyColor, out ParticalEffectManger particalEffectManger)
+    private static void setReferance(EnemyStateManger enemy, out SpriteGlowEffect enemyColor)
     {
-        enemyColor = enemy.GetComponent<SpriteGlowEffect>();
-        particalEffectManger = GameObject.FindGameObjectWithTag("Partical Manger").GetComponent<ParticalEffectManger>();
-        
+        enemyColor = enemy.GetComponent<SpriteGlowEffect>();        
     }
     public override void setupUpdate(EnemyStateManger enemy)
     {
