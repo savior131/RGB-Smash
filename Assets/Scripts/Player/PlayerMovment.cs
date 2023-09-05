@@ -41,7 +41,6 @@ public class PlayerMovment : MonoBehaviour
         {
             StartCoroutine(startDashCoroutines());
         }
-        Debug.Log(playerDash);
     }
     private void FixedUpdate()
     {
