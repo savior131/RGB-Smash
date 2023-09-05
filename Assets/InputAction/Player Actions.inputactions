@@ -179,6 +179,17 @@
                 },
                 {
                     "name": "",
+                    "id": "757f3b23-33e1-41f4-9bb5-0dc996fbc246",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "4be9cd93-6977-4db5-bf1b-5f998d2ea4be",
                     "path": "<Keyboard>/x",
                     "interactions": "",
@@ -203,6 +214,17 @@
                     "name": "",
                     "id": "3d2037a2-4acb-4e99-9ca2-a4048ca6caf4",
                     "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Color Change",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "56388219-7ee5-4558-87e6-f467ee14a6f1",
+                    "path": "<Touchscreen>/delta/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

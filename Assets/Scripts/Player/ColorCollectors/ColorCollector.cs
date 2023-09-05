@@ -41,7 +41,7 @@ public class ColorCollector : MonoBehaviour
         onBlueCollect();
         onGreenCollect();
         onRedCollect();
-        Debug.Log("red" + RGBCapacitis[0] / maxCapacitis + " green " + RGBCapacitis[1] / maxCapacitis + "blue" + RGBCapacitis[2] / maxCapacitis);
+        //Debug.Log("red" + RGBCapacitis[0] / maxCapacitis + " green " + RGBCapacitis[1] / maxCapacitis + "blue" + RGBCapacitis[2] / maxCapacitis);
     }
     IEnumerator DrainCoolDown()
     {
