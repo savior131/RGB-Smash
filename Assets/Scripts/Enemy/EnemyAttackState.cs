@@ -63,7 +63,7 @@ public class EnemyAttackState : EnemyBaseState
             }
             else
             {
-                GameObject player = GameObject.FindGameObjectWithTag("Health Manager");
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
                 player.GetComponent<PlayerHealth>().decreaseHealth();
                 enemy.swichEnemyState(enemy.enemyDestroyState);
                 score.resetCompo();

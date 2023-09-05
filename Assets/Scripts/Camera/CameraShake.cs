@@ -15,26 +15,6 @@ public class CameraShake : MonoBehaviour
     {
         originalPosition = transform.localPosition;
     }
-    public void pauseVolume(bool True)
-    {
-        if (True)
-        {
-            foreach (string layerName in layersToRemovePause)
-            {
-                int layerMaskToRemove = 1 << LayerMask.NameToLayer(layerName);
-                Camera.main.cullingMask &= ~layerMaskToRemove;
-            }
-
-        }
-        else
-        {
-            foreach (string layerName in layersToAddContinue)
-            {
-                int layerMaskToAdd = 1 << LayerMask.NameToLayer(layerName);
-                Camera.main.cullingMask |= layerMaskToAdd;
-            }
-        }
-    }
     public void Shake(float duration, float magnitude, float speed)
     {
         if (shakeCoroutine != null)

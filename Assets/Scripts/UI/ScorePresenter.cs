@@ -7,13 +7,27 @@ public class ScorePresenter : MonoBehaviour
 {
     [SerializeField] PlayerScore playerScore;
     [SerializeField] TextMeshProUGUI scoreText;
-    [SerializeField] TextMeshProUGUI compoText;   
+    [SerializeField] TextMeshProUGUI compoText;
+    [SerializeField] TextMeshProUGUI scoreTextGameOver;
+    [SerializeField] TextMeshProUGUI highScoreTextGameOver;
     int score = 0;
     string space = " X";
     private void Start()
     {
         playerScore.onScoreChange += setScoreTextUI;
         playerScore.onCompoIncreace += setCompoTextUI;
+        highScoreTextGameOver.text = "high score: " + PlayerPrefs.GetInt("HighScore", 0).ToString();
+    }
+
+    public void setScoreUIGameOver()
+    {
+        scoreTextGameOver.text = (playerScore.getScore() + 1).ToString();
+
+        if (playerScore.getScore() > PlayerPrefs.GetInt("HighScore" , 0))
+        {
+            PlayerPrefs.SetInt("HighScore", playerScore.getScore());
+            highScoreTextGameOver.text = "high score: " + (playerScore.getScore() + 1).ToString();
+        }
     }
 
     private void setScoreTextUI()

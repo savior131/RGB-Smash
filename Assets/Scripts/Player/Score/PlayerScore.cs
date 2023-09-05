@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerScore : MonoBehaviour
 {
-    int score  =-1;
+    int score  = -1;
     int compo = 1;
     float comboTimer;
     [SerializeField] float resetCompoTimer;
