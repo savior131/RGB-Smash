@@ -136,10 +136,7 @@ PlayerSettings:
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
   bundleVersion: 1.0
-  preloadedAssets:
-  - {fileID: 6518818530279423429, guid: cd103c46961658a4e8580820b2688423, type: 2}
-  - {fileID: 11400000, guid: 17189457dba14f34fb1b7b281b4acc24, type: 2}
-  - {fileID: 11400000, guid: 6b456a2e1149a644296d4a404861bdf2, type: 2}
+  preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -148,7 +145,7 @@ PlayerSettings:
   vrSettings:
     enable360StereoCapture: 0
   isWsaHolographicRemotingEnabled: 0
-  enableFrameTimingStats: 1
+  enableFrameTimingStats: 0
   enableOpenGLProfilerGPURecorders: 1
   useHDRDisplay: 0
   hdrBitDepth: 0
@@ -159,8 +156,8 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.DefaultCompany.ColorSmash
-    Standalone: com.DefaultCompany.ColorSmash
+    Android: com.DefaultCompany.RBGSamsh
+    Standalone: com.DefaultCompany.RBG-Samsh
   buildNumber:
     Standalone: 0
     iPhone: 0
