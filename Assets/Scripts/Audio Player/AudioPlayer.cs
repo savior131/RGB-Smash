@@ -6,16 +6,16 @@ public class AudioPlayer : SingltonPattern
 {
     [Header("Dash")]
     [SerializeField] AudioClip DashClip;
-    [SerializeField][Range(0, 1)] float volume = 1.0f;
+    [SerializeField][Range(0, 1)] float volume;
     [Header("destroy enemy")]
     [SerializeField] AudioClip destroyEnemyClip;
-    [SerializeField][Range(0, 1)] float destroyEnemyVolume = 1.0f;
+    [SerializeField][Range(0, 1)] float destroyEnemyVolume;
     [Header("player heart")]
     [SerializeField] AudioClip playerHeartClip;
-    [SerializeField][Range(0, 1)] float playerHeartVolume = 1.0f;
+    [SerializeField][Range(0, 1)] float playerHeartVolume;
     [Header("destroy player")]
     [SerializeField] AudioClip destroyPlayerClip;
-    [SerializeField][Range(0, 1)] float destroyPlayerVolume = 1.0f;
+    [SerializeField][Range(0, 1)] float destroyPlayerVolume;
     [Header("Music BackGround")]
     [SerializeField] AudioSource MusicBackGround;
 
@@ -55,7 +55,7 @@ public class AudioPlayer : SingltonPattern
         {
             MusicBackGround.volume += 0.01f;
             yield return new WaitForSeconds(0.03f);
-            if(MusicBackGround.volume >= 1)
+            if(MusicBackGround.volume >= 0.3)
                 StopAllCoroutines();
         }
     }
@@ -66,7 +66,7 @@ public class AudioPlayer : SingltonPattern
         {
             MusicBackGround.volume -= 0.01f;
             yield return new WaitForSeconds(0.01f);
-            if (MusicBackGround.volume <= 0.3f)
+            if (MusicBackGround.volume <= 0.2f)
                 StopAllCoroutines();
         }
     }

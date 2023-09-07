@@ -16,7 +16,7 @@ public class ScorePresenter : MonoBehaviour
     {
         playerScore.onScoreChange += setScoreTextUI;
         playerScore.onCompoIncreace += setCompoTextUI;
-        highScoreTextGameOver.text = "high score: " + PlayerPrefs.GetInt("HighScore", 0).ToString();
+        highScoreTextGameOver.text = "high score: " + (PlayerPrefs.GetInt("HighScore", 0) + 1).ToString();
     }
 
     public void setScoreUIGameOver()

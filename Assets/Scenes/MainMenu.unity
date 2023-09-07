@@ -1133,13 +1133,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DashClip: {fileID: 8300000, guid: df5ea2c1e03547e41962b2eaa5defec9, type: 3}
-  volume: 1
+  volume: 0.103
   destroyEnemyClip: {fileID: 8300000, guid: d288e8b6ea1afbb4488f965455fce8af, type: 3}
-  destroyEnemyVolume: 0.5
+  destroyEnemyVolume: 0.324
   playerHeartClip: {fileID: 8300000, guid: 400a257b8c804494b825bc414b725949, type: 3}
-  playerHeartVolume: 1
+  playerHeartVolume: 0.507
   destroyPlayerClip: {fileID: 8300000, guid: 84afd32ce57fe674a85c5a0f92d8591f, type: 3}
-  destroyPlayerVolume: 1
+  destroyPlayerVolume: 0.507
   MusicBackGround: {fileID: 514223965}
 --- !u!4 &514223964
 Transform:
@@ -1168,7 +1168,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 58c5d8b3b5a74344fbb534307e789cc9, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1866,7 +1866,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -100.6}
+  m_AnchoredPosition: {x: 0, y: -98.87}
   m_SizeDelta: {x: 140, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &958480687
