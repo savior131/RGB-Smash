@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 public class LevelLoader : MonoBehaviour
 {
     [SerializeField] Animator transition;
-
+    private void Start()
+    {
+        Application.targetFrameRate=60;
+    }
     public void LoadThatLevel(int level)
     {
         StartCoroutine(loadLevel(level));

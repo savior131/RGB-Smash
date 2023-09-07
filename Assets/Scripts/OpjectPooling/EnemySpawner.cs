@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.Pool;
 
 public class EnemySpawner : MonoBehaviour
@@ -11,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
     float spawnTimer=20;
     int enemyCount=6;
     bool StillSpawning = true;
+    private int activeEnemyCount = 0;
     private void Awake()
     {
         enemyPool = new ObjectPool<EnemyStateManger>(createEnemy , OnGet , OnReleas);
@@ -35,33 +37,23 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(waitBeforeCreate());
         
     }
-    //private void Update()
-    //{
-    //    GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag("Enemy");
-    //    bool allDisabled = true;
-    //    foreach (GameObject obj in taggedObjects)
-    //    {
-    //        if (obj.activeSelf)
-    //        {
-    //            allDisabled = false;
-    //            break;
-    //        }
-    //    }
-    //    if (allDisabled && !StillSpawning)
-    //    {
-    //        allDisabled = false;
-    //        enemyCount += 1;
-    //        spawnTimer = (spawnTimer > 5) ? spawnTimer - 0.1f : 5;
-    //        StopAllCoroutines();
-    //        StartCoroutine(spawner());
-    //    }
-    //}
+    private void Update()
+    {
+        if (activeEnemyCount == 0 && !StillSpawning)
+        {
+            enemyCount += 1;
+            spawnTimer = Mathf.Max(spawnTimer - 0.1f, 5f);
+            StopAllCoroutines();
+            StartCoroutine(spawner());
+        }
+    }
     IEnumerator spawner()
     {
         while (true)
         {
             for (int i = 0; i < enemyCount; i++)
             {
+                IncreaseEnemyCount();
                 enemyPool.Get();
             }
             yield return new WaitForSeconds(spawnTimer);
@@ -76,4 +68,14 @@ public class EnemySpawner : MonoBehaviour
         StillSpawning = false;
         StartCoroutine(spawner());
     }
+    private void IncreaseEnemyCount()
+    {
+        activeEnemyCount++;
+    }
+
+    public void DecreaseEnemyCount()
+    {
+        activeEnemyCount--;
+    }
+
 }

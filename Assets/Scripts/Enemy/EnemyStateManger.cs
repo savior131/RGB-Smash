@@ -18,6 +18,7 @@ public class EnemyStateManger : MonoBehaviour
     PlayerScore score;
     PlayerStateController playerColor;
     AudioPlayer audioplayer;
+    EnemySpawner enemySpawner;
     #endregion
 
     IObjectPool<EnemyStateManger> enemyPool;
@@ -41,6 +42,7 @@ public class EnemyStateManger : MonoBehaviour
             audioplayer = GameObject.FindGameObjectWithTag("Audio Player").GetComponent<AudioPlayer>();
         }
         particalEffectManger = GameObject.FindGameObjectWithTag("Partical Manger").GetComponent<ParticalEffectManger>();
+        enemySpawner=GameObject.FindGameObjectWithTag("Enemy Spawner").GetComponent<EnemySpawner>();
         enemyColor = GetComponent<SpriteGlowEffect>();
     }
 
@@ -50,7 +52,7 @@ public class EnemyStateManger : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        currentState.setupWhenCollsion(this, collision , score , playerColor , audioplayer);
+        currentState.setupWhenCollsion(this, collision , score , playerColor , audioplayer,enemySpawner);
     }
 
     public void swichEnemyState(EnemyBaseState newState)

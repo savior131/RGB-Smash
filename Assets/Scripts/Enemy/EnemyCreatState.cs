@@ -49,7 +49,7 @@ public class EnemyCreatState : EnemyBaseState
         particalEffectManger.releaseCreateEnemyPartical(enemy.transform, colors[colorIndex]);
 #pragma warning restore CS0612 // Type or member is obsolete
     }
-    public override void setupWhenCollsion(EnemyStateManger enemy , Collision2D collision , PlayerScore score, PlayerStateController playerColor, AudioPlayer audioPlayer)
+    public override void setupWhenCollsion(EnemyStateManger enemy , Collision2D collision , PlayerScore score, PlayerStateController playerColor, AudioPlayer audioPlayer, EnemySpawner enemySpawner)
     {
         
         

@@ -11,7 +11,7 @@ public abstract class EnemyBaseState
         , ParticalEffectManger particalEffectManger , IObjectPool<EnemyStateManger> enemyPool);
     public abstract void setupFixedUpdate(EnemyStateManger enemy);
 
-    public abstract void setupWhenCollsion(EnemyStateManger enemy , Collision2D collision , PlayerScore score , PlayerStateController playerColor , AudioPlayer audioPlayer);
+    public abstract void setupWhenCollsion(EnemyStateManger enemy , Collision2D collision , PlayerScore score , PlayerStateController playerColor , AudioPlayer audioPlayer,EnemySpawner enemySpawner);
 
 }
 

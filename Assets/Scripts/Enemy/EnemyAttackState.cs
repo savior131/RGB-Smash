@@ -33,7 +33,7 @@ public class EnemyAttackState : EnemyBaseState
         enemyColor = enemy.GetComponent<SpriteGlowEffect>();        
     }
 
-    public override void setupWhenCollsion(EnemyStateManger enemy, Collision2D collision , PlayerScore score, PlayerStateController playerColor, AudioPlayer audioPlayer)
+    public override void setupWhenCollsion(EnemyStateManger enemy, Collision2D collision , PlayerScore score, PlayerStateController playerColor, AudioPlayer audioPlayer, EnemySpawner enemySpawner)
     {
         enemyRb.AddForce(force * enemyRb.velocity, ForceMode2D.Impulse);
         Camera.main.GetComponent<CameraShake>().Shake(0.1f, 1f, 5);
@@ -41,18 +41,21 @@ public class EnemyAttackState : EnemyBaseState
         {   
             if (playerColor.getPlayerColor() == Color.red && currentEnemyColor.r == 1)
             {
+                enemySpawner.DecreaseEnemyCount();
                 enemy.swichEnemyState(enemy.enemyDestroyState);
                 score.increaseScore();
                 score.increaseCompo();
             }
             else if (playerColor.getPlayerColor() == Color.green && currentEnemyColor.g == 1)
             {
+                enemySpawner.DecreaseEnemyCount();
                 enemy.swichEnemyState(enemy.enemyDestroyState);
                 score.increaseScore();
                 score.increaseCompo();
             }
             else if (playerColor.getPlayerColor() == Color.blue && currentEnemyColor.b == 1)
             {
+                enemySpawner.DecreaseEnemyCount();
                 enemy.swichEnemyState(enemy.enemyDestroyState);
                 score.increaseScore();
                 score.increaseCompo();
@@ -61,6 +64,7 @@ public class EnemyAttackState : EnemyBaseState
             {
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
                 player.GetComponent<PlayerHealth>().decreaseHealth();
+                enemySpawner.DecreaseEnemyCount();
                 enemy.swichEnemyState(enemy.enemyDestroyState);
                 score.resetCompo();
             }
