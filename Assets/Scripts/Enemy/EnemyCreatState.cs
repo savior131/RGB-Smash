@@ -31,6 +31,10 @@ public class EnemyCreatState : EnemyBaseState
         setColorEnemy(enemy, enemyColor, particalEffectManger);
         enemy.transform.localScale = growScale;
         enemy.GetComponent<CircleCollider2D>().enabled = false;
+        if(enemy.transform.childCount > 0)
+        {
+            GameObject.Destroy(enemy.transform.GetChild(0).gameObject);
+        }
     }
     private void setRandomPosition(EnemyStateManger enemy)
     {
