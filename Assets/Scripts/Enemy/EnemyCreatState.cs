@@ -61,7 +61,7 @@ public class EnemyCreatState : EnemyBaseState
 
     public override void setupFixedUpdate(EnemyStateManger enemy)
     {
-        if (enemy.transform.localScale.x <= 1.4f)
+        if (enemy.transform.localScale.x <= 1.2f)
             enemy.transform.localScale += growScale * Time.deltaTime * growSpeed;
         else
             enemy.swichEnemyState(enemy.enemyAttackState);
