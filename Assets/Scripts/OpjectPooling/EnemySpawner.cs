@@ -42,7 +42,7 @@ public class EnemySpawner : MonoBehaviour
         if (activeEnemyCount == 0 && !StillSpawning)
         {
             enemyCount += 1;
-            spawnTimer = Mathf.Max(spawnTimer - 0.1f, 5f);
+            spawnTimer = (spawnTimer > 10) ? spawnTimer - 0.02f : 10;
             StopAllCoroutines();
             StartCoroutine(spawner());
         }
@@ -58,7 +58,7 @@ public class EnemySpawner : MonoBehaviour
             }
             yield return new WaitForSeconds(spawnTimer);
             enemyCount += 1;
-            spawnTimer = (spawnTimer > 5) ? spawnTimer - 0.1f : 5;     
+            spawnTimer = (spawnTimer > 10) ? spawnTimer - 0.5f : 10;
         }
     }
     IEnumerator waitBeforeCreate()
